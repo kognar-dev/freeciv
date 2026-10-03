@@ -4389,6 +4389,7 @@ rulesets = [
   'multiplayer',
   'alien',
   'sandbox',
+  'ctp2',
   'civ1',
   'civ2',
   'stub'
@@ -4417,6 +4418,7 @@ install_data(
   'data/multiplayer.modpack',
   'data/alien.modpack',
   'data/sandbox.modpack',
+  'data/ctp2.modpack',
   'data/civ1.modpack',
   'data/civ2.modpack',
   install_dir : join_paths(get_option('datadir'), 'freeciv')
@@ -4475,6 +4477,12 @@ install_data(
   'data/sandbox/README.sandbox',
   'data/sandbox/luadata.txt',
   install_dir : join_paths(get_option('datadir'), 'freeciv/sandbox')
+  )
+
+install_data(
+  'data/ctp2/README.ctp2',
+  'data/ctp2/luadata.txt',
+  install_dir : join_paths(get_option('datadir'), 'freeciv/ctp2')
   )
 
 install_data(
