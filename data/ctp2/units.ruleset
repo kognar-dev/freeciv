@@ -1034,6 +1034,39 @@ flags         = "Shield2Gold", "ShieldToGold", "Marines", "Capturer", "Fortress"
 roles         = "DefendGood", "DefendGoodStartUnit", "FirstBuild", "HutTech",
                 "BarbarianTech", "BarbarianBuildTech", "BarbarianSeaTech"
 
+
+[unit_fascist]
+name          = _("Fascist")
+class         = "Land"
+reqs          =
+  { "type", "name", "range"
+    "Tech", "Fascism", "Player"
+    "Gov", "Fascism", "Player"
+  }
+obsolete_by   = "None"
+graphic       = "u.fascist"
+graphic_alt   = "u.musketeers"
+sound_move    = "m_musketeers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_musketeers"
+sound_fight_alt = "f_generic"
+build_cost    = 67
+pop_cost      = 0
+attack        = 5
+defense       = 7
+hitpoints     = 10
+firepower     = 3
+move_rate     = 2
+vision_radius_sq = 5
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 1
+uk_gold       = 0
+tp_defense    = "Alight"
+flags         = "Shield2Gold", "ShieldToGold", "Marines", "Capturer", "Fortress", "FleshBased"
+roles         = "DefendGood"
 [unit_cavalry]
 name          = _("Cavalry")
 class         = "Land"
@@ -2634,7 +2667,7 @@ class         = "Land"
 reqs          =
   { "type", "name", "range"
     "Tech", "Communism", "Player"
-    "Gov",  "Fundamentalism",   "Player"
+    "Gov",  "Theocracy",   "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.fanatics"

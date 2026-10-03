@@ -1043,8 +1043,13 @@ actor_reqs    =
       "UnitFlag", "EvacuateFirst", "Local",  FALSE
       "UnitFlag", "Consensus",     "Local",  TRUE
       "Gov",      "Communism",     "Player", FALSE
+      "Gov",      "Fascism",     "Player", FALSE
       "Gov",      "Democracy",     "Player", FALSE
+      "Gov",      "Corporate Republic",     "Player", FALSE
+      "Gov",      "Ecotopia",     "Player", FALSE
+      "Gov",      "Virtual Democracy",     "Player", FALSE
       "Gov",      "Republic",      "Player", FALSE
+      "Gov",      "Technocracy",      "Player", FALSE
       "DiplRel",  "War",        "Local", FALSE
       "DiplRel",  "Cease-fire", "Local", FALSE
       "DiplRel",  "Armistice",  "Local", FALSE
@@ -1066,8 +1071,13 @@ actor_reqs    =
       "UnitFlag", "EvacuateFirst", "Local",  FALSE
       "UnitFlag", "Consensus",     "Local",  TRUE
       "Gov",      "Communism",     "Player", FALSE
+      "Gov",      "Fascism",     "Player", FALSE
       "Gov",      "Democracy",     "Player", FALSE
+      "Gov",      "Corporate Republic",     "Player", FALSE
+      "Gov",      "Ecotopia",     "Player", FALSE
+      "Gov",      "Virtual Democracy",     "Player", FALSE
       "Gov",      "Republic",      "Player", FALSE
+      "Gov",      "Technocracy",      "Player", FALSE
     }
 
 [actionenabler_capture]

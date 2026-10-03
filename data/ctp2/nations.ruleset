@@ -28,7 +28,7 @@ embedded_nations = "Barbarian", "Animal Kingdom"
 [compatibility]
 ; Initial government for all the nations that do not
 ; have it explicitly defined
-default_government = "Despotism"
+default_government = "Tyranny"
 
 [default_traits]
 ; Default values for the AI traits. These are used if nation specific
