@@ -536,6 +536,13 @@ signal.connect("action_started_unit_tile",
 -- from 5 tiles (10 satellites) to 16 tiles (40 satellites).
 -- Turn counters are global numbers so that they are saved with the game.
 
+-- Lua gets object ids as floats ("1.0"). Global variable names saved
+-- with the game must use the integer form, or the savegame's Lua state
+-- does not load.
+function ctp2_var(prefix, id)
+  return prefix .. math.floor(id)
+end
+
 local GAIA_TURNS = 10
 local GAIA_MIN_SATELLITES = 10
 local GAIA_MAX_SATELLITES = 40
@@ -594,7 +601,7 @@ function ctp2_gaia_turn(turn, year)
 
   for player in players_iterate() do
     if player.is_alive then
-      local var = "ctp2_gaia_turns_" .. player.id
+      local var = ctp2_var("ctp2_gaia_turns_", player.id)
       local running = _G[var] or 0
 
       if map_tiles == nil then
@@ -626,3 +633,178 @@ function ctp2_gaia_turn(turn, year)
 end
 
 signal.connect("turn_begin", "ctp2_gaia_turn")
+
+-- Call to Power II special units.
+-- Conversions and franchises are stored per city in global numbers
+-- (ctp2_conv_<city id> = converting player id + 1, ctp2_convf_<city id> =
+-- tithe factor, ctp2_fran_<city id> = franchise owner id + 1) so that they
+-- are saved with the game. 0 or nil means none.
+
+local CTP2_SPECIAL_SUCCESS = 75   -- % chance to convert or franchise
+local CTP2_SPECIAL_DEATH = 50     -- % chance to die after a failure
+local CTP2_TITHE_CLERIC = 2       -- tithe = city size * factor / 5
+local CTP2_TITHE_TELEVANGELIST = 4
+local CTP2_FRANCHISE_FACTOR = 1   -- franchise = city size * factor / 5
+
+local function ctp2_unit_on_tile(tile, owner, names)
+  for unit in tile:units_iterate() do
+    if unit.owner == owner and names[unit.utype:rule_name()] then
+      return true
+    end
+  end
+  return false
+end
+
+local function ctp2_pay(from, to, amount)
+  amount = math.min(amount, from:gold())
+  if amount > 0 then
+    edit.change_gold(from, -amount)
+    edit.change_gold(to, amount)
+  end
+end
+
+local function ctp2_special_roll(actor, city, what)
+  if random(1, 100) <= CTP2_SPECIAL_SUCCESS then
+    return true
+  end
+  if random(1, 100) <= CTP2_SPECIAL_DEATH then
+    notify.event(actor.owner, city.tile, E.UNIT_ACTION_ACTOR_FAILURE,
+                 _("Your %s failed to %s in %s and was lost."),
+                 actor:link_text(), what, city:link_text())
+    actor:kill("caught", city.owner)
+  else
+    notify.event(actor.owner, city.tile, E.UNIT_ACTION_ACTOR_FAILURE,
+                 _("Your %s failed to %s in %s."),
+                 actor:link_text(), what, city:link_text())
+  end
+  return false
+end
+
+local ctp2_raid = nil
+
+function ctp2_action_started_unit_city(action, actor, city)
+  local name = action:rule_name()
+  local utype = actor.utype:rule_name()
+
+  if name == "User Action 3" then
+    -- Convert City
+    if ctp2_special_roll(actor, city, _("convert the city")) then
+      _G[ctp2_var("ctp2_conv_", city.id)] = math.floor(actor.owner.id) + 1
+      if utype == "Televangelist" then
+        _G[ctp2_var("ctp2_convf_", city.id)] = CTP2_TITHE_TELEVANGELIST
+      else
+        _G[ctp2_var("ctp2_convf_", city.id)] = CTP2_TITHE_CLERIC
+      end
+      notify.event(actor.owner, city.tile, E.UNIT_ACTION_ACTOR_SUCCESS,
+                   _("Your %s converted %s to your faith."),
+                   actor:link_text(), city:link_text())
+      notify.event(city.owner, city.tile, E.UNIT_ACTION_TARGET_HOSTILE,
+                   _("%s %s converted %s. The city will pay them a tithe."),
+                   actor.owner.nation:name_translation(),
+                   actor:link_text(), city:link_text())
+    end
+  elseif name == "User Action 4" then
+    -- Create Franchise
+    if ctp2_special_roll(actor, city, _("create a franchise")) then
+      _G[ctp2_var("ctp2_fran_", city.id)] = math.floor(actor.owner.id) + 1
+      notify.event(actor.owner, city.tile, E.UNIT_ACTION_ACTOR_SUCCESS,
+                   _("Your %s opened a franchise in %s."),
+                   actor:link_text(), city:link_text())
+      notify.event(city.owner, city.tile, E.UNIT_ACTION_TARGET_HOSTILE,
+                   _("%s %s opened a franchise in %s. Send a Lawyer there to close it."),
+                   actor.owner.nation:name_translation(),
+                   actor:link_text(), city:link_text())
+    end
+  elseif name == "Poison City" and utype == "Slaver" then
+    -- Slave Raid: an Abolitionist in the city catches the Slaver.
+    if ctp2_unit_on_tile(city.tile, city.owner, { Abolitionist = true }) then
+      notify.event(actor.owner, city.tile, E.UNIT_ACTION_ACTOR_FAILURE,
+                   _("Your %s was caught by an Abolitionist in %s."),
+                   actor:link_text(), city:link_text())
+      notify.event(city.owner, city.tile, E.UNIT_ACTION_TARGET_HOSTILE,
+                   _("An Abolitionist caught a %s Slaver in %s."),
+                   actor.owner.nation:name_translation(), city:link_text())
+      actor:kill("caught", city.owner)
+      return
+    end
+    -- The action uses up the Slaver; remember it to bring it back.
+    ctp2_raid = { owner = actor.owner, tile = actor.tile,
+                  veteran = actor.veteran, homecity = actor:get_homecity() }
+  end
+end
+
+function ctp2_action_finished_unit_city(action, success, actor, city)
+  local name = action:rule_name()
+
+  if name == "Poison City" and ctp2_raid ~= nil then
+    local raid = ctp2_raid
+    ctp2_raid = nil
+    if success then
+      local slaves = edit.create_unit(raid.owner, raid.tile,
+                                      find.unit_type("Workers"), 0, nil, 0)
+      edit.create_unit(raid.owner, raid.tile, find.unit_type("Slaver"),
+                       raid.veteran, raid.homecity, 0)
+      if slaves ~= nil then
+        notify.event(raid.owner, raid.tile, E.UNIT_ACTION_ACTOR_SUCCESS,
+                     _("The raid brought back slaves: %s."),
+                     slaves:link_text())
+      end
+    end
+  elseif name == "Destroy City" and success and actor ~= nil
+         and actor.utype:rule_name() == "Eco-Ranger" then
+    -- Creating a park uses up the Eco-Ranger.
+    actor:kill("used")
+  end
+end
+
+signal.connect("action_started_unit_city", "ctp2_action_started_unit_city")
+signal.connect("action_finished_unit_city", "ctp2_action_finished_unit_city")
+
+function ctp2_specials_turn(turn, year)
+  local clerics = { Cleric = true, Televangelist = true }
+  local lawyers = { Lawyer = true }
+
+  for owner in players_iterate() do
+    for city in owner:cities_iterate() do
+      local conv = _G[ctp2_var("ctp2_conv_", city.id)] or 0
+      local fran = _G[ctp2_var("ctp2_fran_", city.id)] or 0
+
+      if conv > 0 then
+        local by = find.player(conv - 1)
+        if by == nil or by == owner or not by.is_alive then
+          _G[ctp2_var("ctp2_conv_", city.id)] = 0
+        elseif ctp2_unit_on_tile(city.tile, owner, clerics) then
+          _G[ctp2_var("ctp2_conv_", city.id)] = 0
+          notify.event(owner, city.tile, E.CITY_TRANSFER,
+                       _("%s has returned to your faith."), city:link_text())
+          notify.event(by, city.tile, E.CITY_TRANSFER,
+                       _("%s has returned to its old faith."),
+                       city:link_text())
+        else
+          local factor = _G[ctp2_var("ctp2_convf_", city.id)] or CTP2_TITHE_CLERIC
+          ctp2_pay(owner, by, math.max(1, city.size * factor // 5))
+        end
+      end
+
+      if fran > 0 then
+        local by = find.player(fran - 1)
+        if by == nil or by == owner or not by.is_alive then
+          _G[ctp2_var("ctp2_fran_", city.id)] = 0
+        elseif ctp2_unit_on_tile(city.tile, owner, lawyers) then
+          _G[ctp2_var("ctp2_fran_", city.id)] = 0
+          notify.event(owner, city.tile, E.CITY_TRANSFER,
+                       _("Your Lawyer closed the %s franchise in %s."),
+                       by.nation:name_translation(), city:link_text())
+          notify.event(by, city.tile, E.CITY_TRANSFER,
+                       _("Your franchise in %s was closed by a lawsuit."),
+                       city:link_text())
+        else
+          ctp2_pay(owner, by,
+                   math.max(1, city.size * CTP2_FRANCHISE_FACTOR // 5))
+        end
+      end
+    end
+  end
+end
+
+signal.connect("turn_begin", "ctp2_specials_turn")

@@ -5319,3 +5319,21 @@ reqs    =
       "Building", "Gaia Power Satellite", "City"
       "OutputType", "Shield", "Local"
     }
+
+; Call to Power II special units: converting a city or creating a
+; franchise takes the rest of the unit's turn.
+[effect_ctp2_convert_city_move_cost]
+type    = "Action_Success_Actor_Move_Cost"
+value   = 65535
+reqs    =
+    { "type",   "name",          "range"
+      "Action", "User Action 3", "Local"
+    }
+
+[effect_ctp2_create_franchise_move_cost]
+type    = "Action_Success_Actor_Move_Cost"
+value   = 65535
+reqs    =
+    { "type",   "name",          "range"
+      "Action", "User Action 4", "Local"
+    }
