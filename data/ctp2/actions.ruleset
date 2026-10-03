@@ -569,36 +569,6 @@ target_reqs   =
     }
 
 ; Use Ancient Transportation Network
-[actionenabler_ancient_transport_hub]
-action        = "User Action 2"
-actor_reqs    =
-    { "type",     "name",                  "range",  "present"
-      "Building", "Mysteries",             "Player", TRUE
-      "Extra",    "Ancient Transport Hub", "Tile",   TRUE
-    }
-target_reqs   =
-    { "type",           "name",                  "range", "present"
-      "Extra",          "Ancient Transport Hub", "Tile",  TRUE
-    }
-
-[actionenabler_cut_root]
-action        = "Heal Unit 2"
-actor_reqs    =
-    { "type",         "name",       "range",  "present"
-      "Building",     "Mysteries",  "Player", TRUE
-      "UnitFlag",     "FleshBased", "Local",  TRUE
-      "MinMoveFrags", 1,            "Local",  TRUE
-      "DiplRel",      "Armistice",  "Local",  FALSE
-      "DiplRel",      "War",        "Local",  FALSE
-      "DiplRel",      "Cease-fire", "Local",  FALSE
-      "DiplRel",      "Peace",      "Local",  FALSE
-      "DiplRel",      "Never met",  "Local",  FALSE
-    }
-target_reqs   =
-    { "type",         "name",       "range", "present"
-      "UnitFlag",     "FleshBased", "Local", TRUE
-    }
-
 [actionenabler_sabotage_city]
 action        = "Sabotage City"
 actor_reqs    =
@@ -792,7 +762,6 @@ actor_reqs    =
       "DiplRel",      "War",           "Local", TRUE
       "UnitState",    "OnLivableTile", "Local", TRUE
       "MinMoveFrags", "1",             "Local", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 target_reqs   =
     { "type",   "name", "range"
@@ -820,51 +789,6 @@ target_reqs   =
 ; by conspiracy theories.
 ; I delayed introducing this rule until 2021 because of COVID-19.
 ; -- Sveinung
-[actionenabler_release_plague_from_georgia_guidestones]
-action        = "Spread Plague"
-actor_reqs    =
-    { "type",         "name",                "range",  "present"
-      "UnitFlag",     "Spy",                 "Local",  TRUE
-      "UnitState",    "OnLivableTile",       "Local",  TRUE
-      "MinMoveFrags", "1",                   "Local",  TRUE
-      "Tech",         "Alchemy",            "Player", TRUE
-      "Building",     "Guidestones",         "Player", TRUE
-      "Building",     "Treuga Dei",          "World",  FALSE
-    }
-target_reqs   =
-    { "type",     "name",         "range"
-      ; matches illness.illness_min_size
-      "MinSize",  "5",            "City"
-    }
-
-; This is in no way, shape or form an accusation that the USA was behind
-; the COVID-19 pandemic. I had planned this rule as a part of a new ruleset,
-; "Too Much Detail", long before the Corona pandemic. The rule was inspired
-; by conspiracy theories.
-; I delayed introducing this rule until 2021 because of COVID-19.
-; -- Sveinung
-[actionenabler_release_plague_from_georgia_guidestones_despite_treuga_dei]
-action        = "Spread Plague"
-actor_reqs    =
-    { "type",         "name",                "range",  "present", "survives"
-      "UnitFlag",     "Spy",                 "Local",  TRUE,      FALSE
-      "UnitState",    "OnLivableTile",       "Local",  TRUE,      FALSE
-      "MinMoveFrags", "1",                   "Local",  TRUE,      FALSE
-      "Tech",         "Alchemy",            "Player", TRUE,      FALSE
-      "Building",     "Guidestones",         "Player", TRUE,      FALSE
-      "Tech",         "Communism",           "World",  TRUE,      TRUE
-    }
-target_reqs   =
-    { "type",     "name",         "range"
-      ; matches illness.illness_min_size
-      "MinSize",  "5",            "City"
-    }
-
-; This is in no way, shape or form an accusation that China was behind the
-; COVID-19 pandemic. I had planned this rule as a part of a new ruleset,
-; "Too Much Detail", long before the Corona pandemic.
-; I delayed introducing this rule until 2021 because of COVID-19.
-; -- Sveinung
 [actionenabler_release_plague_from_domestic]
 action        = "Spread Plague"
 actor_reqs    =
@@ -874,7 +798,6 @@ actor_reqs    =
       "UnitState",    "OnLivableTile", "Local",  TRUE
       "MinMoveFrags", "1",             "Local",  TRUE
       "Tech",         "Alchemy",      "Player", TRUE
-      "Building",     "Treuga Dei",    "World",  FALSE
     }
 target_reqs   =
     { "type",     "name",         "range"
@@ -915,13 +838,12 @@ actor_reqs    =
       "UnitState",    "OnLivableTile", "Local", TRUE
       "MinMoveFrags", "1",             "Local", TRUE
       "Tech",         "Alchemy",      "Player", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 target_reqs   =
     { "type",     "name",         "range"
       ; matches illness.illness_min_size
       "MinSize",  "5",            "City"
-      "Building", "Research Lab", "City"
+      "Building", "Computer Center", "City"
     }
 
 [actionenabler_release_plague_from_bio_lab_despite_treuga_dei]
@@ -941,7 +863,7 @@ target_reqs   =
     { "type",     "name",         "range"
       ; matches illness.illness_min_size
       "MinSize",  "5",            "City"
-      "Building", "Research Lab", "City"
+      "Building", "Computer Center", "City"
     }
 
 [actionenabler_mechanic]
@@ -976,9 +898,7 @@ actor_reqs    =
 target_reqs   =
     { "type",     "name",                  "range", "present"
       "Building", "Courthouse",            "City",   FALSE
-      "Building", "Palace",                "City",   FALSE
-      "Building", "Ecclesiastical Palace", "City",   FALSE
-      "Building", "Mausoleum of Mausolos", "Player", FALSE
+      "Building", "Capitol",                "City",   FALSE
     }
 
 [actionenabler_incite_city_spy]
@@ -995,9 +915,7 @@ actor_reqs    =
 target_reqs   =
     { "type",     "name",                  "range", "present"
       "Building", "Courthouse",            "City",   FALSE
-      "Building", "Palace",                "City",   FALSE
-      "Building", "Ecclesiastical Palace", "City",   FALSE
-      "Building", "Mausoleum of Mausolos", "Player", FALSE
+      "Building", "Capitol",                "City",   FALSE
     }
 
 [actionenabler_bribe_unit]
@@ -1026,7 +944,6 @@ actor_reqs    =
       "DiplRel",      "War",           "Local", TRUE
       "UnitState",    "OnLivableTile", "Local", TRUE
       "MinMoveFrags", "1",             "Local", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 target_reqs   =
     { "type",   "name", "range", "present"
@@ -1085,7 +1002,7 @@ actor_reqs    =
     }
 target_reqs   =
     { "type",     "name",        "range"
-      "Building", "Marketplace", "City"
+      "Building", "Bazaar", "City"
     }
 
 [actionenabler_help_build_wonder]
@@ -1107,18 +1024,6 @@ target_reqs   =
 ; A pacifist wanting to end violence or a neocon looking forward to the
 ; Casus Belli against terrorist states once Treuga Dei is finished may wish
 ; to help a non-allied player to complete Treuga Dei.
-[actionenabler_help_build_wonder_treuga_dei]
-action        = "Help Wonder"
-actor_reqs    =
-    { "type",         "name",       "range", "present"
-      "UnitFlag",     "HelpWonder", "Local", TRUE
-      "MinMoveFrags", "1",          "Local", TRUE
-    }
-target_reqs   =
-    { "type",     "name",       "range"
-      "Building", "Treuga Dei", "Local"
-    }
-
 [actionenabler_disband_unit_recover]
 action        = "Disband Unit Recover"
 actor_reqs    =
@@ -1173,7 +1078,6 @@ actor_reqs    =
       "DiplRel", "War", "Local", TRUE
       "MinMoveFrags", "1", "Local", TRUE
       "DiplRel", "Foreign", "Local", TRUE
-      "Building", "Treuga Dei", "World", FALSE
     }
 target_reqs    =
     { "type",      "name",         "range", "present"
@@ -1207,7 +1111,6 @@ actor_reqs    =
       "UnitState",    "Transported", "Local", FALSE
       "MinMoveFrags", "1",           "Local", TRUE
       "DiplRel",      "War",         "Local", TRUE
-      "Building",     "Treuga Dei",  "World", FALSE
     }
 target_reqs    =
     { "type",             "name",    "range", "present"
@@ -1323,7 +1226,6 @@ action = "Explode Nuclear"
 actor_reqs    =
     { "type",   "name", "range", "present"
       "UnitFlag", "NuclearOP", "Local", TRUE
-      "Building", "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_nuke_despite_treuga_dei]
@@ -1340,7 +1242,6 @@ actor_reqs =
     { "type",         "name",       "range", "present"
       "UnitFlag",     "Nuclear",    "Local", TRUE
       "MinMoveFrags", "1",          "Local", TRUE
-      "Building",     "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_nuke_city_despite_treuga_dei]
@@ -1360,7 +1261,6 @@ actor_reqs =
       "Tech",         "Guided Weapon Systems",     "Player", TRUE
       "MinMoveFrags", "1",            "Local",  TRUE
       "DiplRel",      "War",          "Local",  TRUE
-      "Building",     "Treuga Dei",   "World",  FALSE
     }
 
 [actionenabler_nuke_units_despite_treuga_dei]
@@ -1385,8 +1285,6 @@ actor_reqs    =
       "DiplRel",      "Foreign",           "Local",  TRUE
       "UnitState",    "OnLivableTile",     "Local",  TRUE
       "MinMoveFrags", "1",                 "Local",  TRUE
-      "Building",     "Manhattan Project", "Player", TRUE
-      "Building",     "Treuga Dei",        "World",  FALSE
     }
 
 [actionenabler_suitcase_nuke_despite_treuga_dei]
@@ -1400,7 +1298,6 @@ actor_reqs    =
       "DiplRel",      "Foreign",           "Local",  TRUE,      FALSE
       "UnitState",    "OnLivableTile",     "Local",  TRUE,      FALSE
       "MinMoveFrags", "1",                 "Local",  TRUE,      FALSE
-      "Building",     "Manhattan Project", "Player", TRUE,      FALSE
       "Tech",         "Communism",         "World",  TRUE,      TRUE
     }
 
@@ -1415,8 +1312,6 @@ actor_reqs    =
       "DiplRel",      "Foreign",           "Local",  TRUE
       "UnitState",    "OnLivableTile",     "Local",  TRUE
       "MinMoveFrags", "1",                 "Local",  TRUE
-      "Building",     "Manhattan Project", "Player", TRUE
-      "Building",     "Treuga Dei",        "World",  FALSE
     }
 
 [actionenabler_suitcase_nuke_escape_despite_treuga_dei]
@@ -1430,7 +1325,6 @@ actor_reqs    =
       "DiplRel",      "Foreign",           "Local",  TRUE,      FALSE
       "UnitState",    "OnLivableTile",     "Local",  TRUE,      FALSE
       "MinMoveFrags", "1",                 "Local",  TRUE,      FALSE
-      "Building",     "Manhattan Project", "Player", TRUE,      FALSE
       "Tech",         "Communism",         "World",  TRUE,      TRUE
     }
 
@@ -1458,7 +1352,6 @@ actor_reqs    =
       "DiplRel",      "Foreign",    "Local", FALSE
       "MinMoveFrags", "1",             "Local", TRUE
       "UnitState",    "OnLivableTile", "Local", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 
 [actionenabler_scorched_earth_despite_treuga_dei]
@@ -1481,7 +1374,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",            "Local", TRUE
       "UnitState",     "OnNativeTile", "Local", TRUE
       "DiplRel",       "War",          "Local", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 
 [actionenabler_attack_from_native_despite_treuga_dei]
@@ -1505,7 +1397,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",          "Local", TRUE
       "UnitFlag",      "Marines",    "Local", TRUE
       "DiplRel",       "War",        "Local", TRUE
-      "Building",      "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_attack_marines_despite_treuga_dei]
@@ -1529,7 +1420,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",                "Local", TRUE
       "UnitClassFlag", "AttFromNonNative", "Local", TRUE
       "DiplRel",       "War",              "Local", TRUE
-      "Building",      "Treuga Dei",       "World", FALSE
     }
 
 [actionenabler_attack_att_from_non_native_despite_treuga_dei]
@@ -1553,7 +1443,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",            "Local", TRUE
       "UnitState",     "OnNativeTile", "Local", TRUE
       "DiplRel",       "War",          "Local", TRUE
-      "Building",     "Treuga Dei",    "World", FALSE
     }
 
 [actionenabler_ransom_from_native_despite_treuga_dei]
@@ -1577,7 +1466,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",          "Local", TRUE
       "UnitFlag",      "Marines",    "Local", TRUE
       "DiplRel",       "War",        "Local", TRUE
-      "Building",      "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_ransom_marines_despite_treuga_dei]
@@ -1601,7 +1489,6 @@ actor_reqs    =
       "MinMoveFrags",  "1",                "Local", TRUE
       "UnitClassFlag", "AttFromNonNative", "Local", TRUE
       "DiplRel",       "War",              "Local", TRUE
-      "Building",      "Treuga Dei",       "World", FALSE
     }
 
 [actionenabler_ransom_att_from_non_native_despite_treuga_dei]
@@ -1624,7 +1511,6 @@ actor_reqs    =
       "UnitClassFlag", "Missile",    "Local", TRUE
       "MinMoveFrags",  "1",          "Local", TRUE
       "DiplRel",       "War",        "Local", TRUE
-      "Building",      "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_explode_missile_despite_treuga_dei]
@@ -1645,7 +1531,6 @@ actor_reqs  =
       "UnitFlag",     "NonMil",     "Local", FALSE
       "DiplRel",      "War",        "Local", TRUE
       "MinMoveFrags", "1",          "Local", TRUE
-      "Building",     "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_wipe_units_communism]
@@ -1667,7 +1552,6 @@ actor_reqs    =
       "DiplRel",        "War",            "Local",  TRUE
       "MinMoveFrags",   "1",              "Local",  TRUE
       "UnitState",      "OnLivableTile",  "Local",  TRUE
-      "Building",       "Treuga Dei",     "World",  FALSE
       "Nation",         "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -1702,7 +1586,6 @@ actor_reqs    =
       "MinMoveFrags",   "1",              "Local",  TRUE
       "UnitFlag",       "Marines",        "Local",  TRUE
       "UnitState",      "OnLivableTile",  "Local",  FALSE
-      "Building",       "Treuga Dei",     "World",  FALSE
       "Nation",         "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -1743,14 +1626,6 @@ actor_reqs    =
     { "type",      "name",     "range", "present"
       "UnitFlag",  "Diplomat", "Local", TRUE
       "DiplRel",   "Foreign",  "Local", FALSE
-    }
-
-[actionenabler_no_home_city]
-action = "Unit Make Homeless"
-actor_reqs    =
-    { "type",      "name",                      "range", "present"
-      "UnitState", "HasHomeCity",               "Local", TRUE
-      "Building",  "Altar to The Divine Ruler", "City",  TRUE
     }
 
 [actionenabler_paradrop_base_to_claimed_not_forest]
@@ -1800,7 +1675,6 @@ actor_reqs    =
       "UnitClassFlag", "CanOccupyCity",  "Local",  TRUE
       "UnitFlag",      "NonMil",         "Local",  FALSE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -1839,7 +1713,6 @@ actor_reqs    =
       "UnitState",     "Transporting",   "Local",  FALSE
       "ExtraFlag",     "ParadropFrom",   "Tile",   TRUE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -1918,7 +1791,6 @@ actor_reqs    =
       "UnitClassFlag", "CanOccupyCity",  "Local",  TRUE
       "UnitFlag",      "NonMil",         "Local",  FALSE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -1957,7 +1829,6 @@ actor_reqs    =
       "MinVeteran",    "1",              "Local",  TRUE
       "ExtraFlag",     "ParadropFrom",   "Tile",   TRUE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -2034,7 +1905,6 @@ actor_reqs    =
       "UnitClassFlag", "CanOccupyCity",  "Local",  TRUE
       "UnitFlag",      "NonMil",         "Local",  FALSE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -2073,7 +1943,6 @@ actor_reqs    =
       "UnitState",     "Transporting",   "Local",  FALSE
       "CityTile",      "Center",         "Tile",   TRUE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -2152,7 +2021,6 @@ actor_reqs    =
       "UnitClassFlag", "CanOccupyCity",  "Local",  TRUE
       "UnitFlag",      "NonMil",         "Local",  FALSE
       "UnitClassFlag", "HutFrighten",    "Local",  FALSE
-      "Building",      "Treuga Dei",     "World",  FALSE
       "Nation",        "Animal Kingdom", "Player", FALSE
     }
 target_reqs   =
@@ -2191,7 +2059,6 @@ actor_reqs    =
       "MinVeteran",    "1",            "Local", TRUE
       "CityTile",      "Center",       "Tile",  TRUE
       "UnitClassFlag", "HutFrighten",  "Local", FALSE
-      "Building",      "Treuga Dei",   "World", FALSE
     }
 target_reqs   =
     { "type",     "name",    "range", "present"
@@ -2384,7 +2251,6 @@ actor_reqs    =
       "DiplRel",      "Team",         "Local", FALSE
       "UnitFlag",     "NonMil",       "Local", FALSE
       "UnitState",    "OnNativeTile", "Local", TRUE
-      "Building",     "Treuga Dei",   "World", FALSE
     }
 
 [actionenabler_claim_extra_foreign_from_native_tile_despite_treuga_dei]
@@ -2412,7 +2278,6 @@ actor_reqs    =
       "DiplRel",      "Team",       "Local", FALSE
       "UnitFlag",     "NonMil",     "Local", FALSE
       "CityTile",     "Center",     "Tile",  TRUE
-      "Building",     "Treuga Dei", "World", FALSE
     }
 
 [actionenabler_claim_extra_foreign_from_native_city_despite_treuga_dei]
@@ -2441,7 +2306,6 @@ actor_reqs    =
       "UnitFlag",     "NonMil",       "Local", FALSE
       "UnitState",    "OnNativeTile", "Local", FALSE
       "CityTile",     "Center",       "Tile",  FALSE
-      "Building",     "Treuga Dei",   "World", FALSE
     }
 
 [actionenabler_claim_extra_foreign_from_non_native_despite_treuga_dei]
@@ -2466,7 +2330,6 @@ actor_reqs    =
       "MinMoveFrags", "1",            "Local", TRUE
       "UnitFlag",     "NonMil",       "Local", FALSE
       "UnitState",    "OnNativeTile", "Local", TRUE
-      "Building",     "Treuga Dei",   "World", FALSE
     }
 target_reqs    =
     { "type",         "name",         "range", "present"
@@ -2494,7 +2357,6 @@ actor_reqs    =
       "MinMoveFrags", "1",            "Local", TRUE
       "UnitFlag",     "NonMil",       "Local", FALSE
       "CityTile",     "Center",       "Tile",  TRUE
-      "Building",     "Treuga Dei",   "World", FALSE
     }
 target_reqs    =
     { "type",         "name",         "range", "present"
@@ -2523,7 +2385,6 @@ actor_reqs    =
       "UnitFlag",     "NonMil",       "Local", FALSE
       "UnitState",    "OnNativeTile", "Local", FALSE
       "CityTile",     "Center",       "Tile",  FALSE
-      "Building",     "Treuga Dei",   "World", FALSE
     }
 target_reqs    =
     { "type",         "name",         "range", "present"

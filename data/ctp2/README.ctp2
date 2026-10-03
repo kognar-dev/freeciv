@@ -90,8 +90,8 @@ prerequisites. Research costs still follow Freeciv's "Linear" formula
 (cost grows with the number of prerequisites) instead of CTP2's own
 numbers, which keeps the research pace close to other Freeciv rulesets.
 
-Buildings, wonders and governments are still the sandbox ones; their
-requirements were moved to the CTP2 advance of the same era or role.
+Governments are still the sandbox ones; their requirements were moved
+to the CTP2 advance of the same era or role.
 
 
 Units
@@ -122,6 +122,40 @@ units (Fascist), undersea and space units (Sea Engineer, Crawler,
 Space Plane) and the Cargo Helicopter.
 
 
+Buildings and wonders
+---------------------
+
+The 51 city improvements and 30 wonders of CTP2 replace the Freeciv
+ones. Requirements (advance, prerequisite buildings, coastal cities),
+cost (CTP2 / 10) and upkeep (CTP2 / 3) come from CTP2, and their
+effects are converted from the CTP2 data:
+
+  food, production, science, commerce %   Output_Bonus (commerce
+                                          gives gold and luxury)
+  happiness                               content citizens
+  overcrowding level                      1 content citizen per 4
+  maximum population (Aqueduct,           +8 maximum city size each
+    Arcologies, Aqua-Filter)
+  crime reduction                         less waste (3 x CTP2 %)
+  tower bonuses against land, sea, air    defense bonus against
+                                          those unit classes
+  City Wall, Forcefield                   defense bonus
+  pollution reduction                     less pollution
+  Anti-Ballistic Missiles                 protection from nukes
+
+Wonders that place a building in every city (Hagia Sophia, Internet,
+National Shield, Central Matter Decompiler) give that building's
+effects to every city of the owner. Effects without a direct Freeciv
+equivalent are approximated: trade route gold becomes +50% trade route
+income, regard becomes AI love, GlobeSat reveals the map, The Agency
+reveals all cities, and the Solaris Project enables the spaceship
+(the Freeciv space race stands in for the Gaia Controller for now).
+
+The Capitol is the old Palace: every civilization starts with one,
+and rebuilding it after losing the capital needs Feudalism, as in
+CTP2. Coinage and the spaceship parts also remain.
+
+
 Known limitations
 -----------------
 
@@ -136,9 +170,9 @@ Roadmap
 -------
 
 1. Policies and Public Works (done).
-2. CTP2 technology tree and units (this version). Next: buildings
-   and wonders, crime as waste, city radius growing with size, CTP2
-   governments.
+2. CTP2 technology tree, units, buildings and wonders (this version).
+   Next: CTP2 governments, crime as waste, city radius growing with
+   size, Gaia Controller victory.
 3. Lua: Feats of Wonder, readiness delay, ruins.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.
