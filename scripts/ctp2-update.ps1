@@ -3,13 +3,13 @@
 #
 # Usage (PowerShell):
 #   powershell -ExecutionPolicy Bypass -File ctp2-update.ps1
-#   powershell -ExecutionPolicy Bypass -File ctp2-update.ps1 -Branch 3.2.6
+#   powershell -ExecutionPolicy Bypass -File ctp2-update.ps1 -Branch claude/some-branch
 #
 # Requires git (https://git-scm.com/download/win).
 
 param(
   [string]$RepoUrl = "https://github.com/kognar-dev/freeciv.git",
-  [string]$Branch = "claude/sweet-wozniak-6ym99r",
+  [string]$Branch = "3.2.6",
   [string]$RepoDir = "$env:USERPROFILE\src\freeciv-ctp2",
   [string]$UserData = "$env:APPDATA\.freeciv\3.2"
 )
