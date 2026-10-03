@@ -545,7 +545,7 @@ name          = _("Migrants")
 class         = "Small Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Pottery", "Player"
+    "Tech", "Agriculture", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.migrants"
@@ -683,7 +683,7 @@ name          = _("Mechanic")
 class         = "Small Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Engineering", "Player"
+    "Tech", "Physics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.mechanic"
@@ -791,7 +791,7 @@ name          = _("Archers")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Warrior Code", "Player"
+    "Tech", "Ballistics", "Player"
   }
 obsolete_by   = "Musketeers"
 graphic       = "u.archers"
@@ -937,7 +937,7 @@ name          = _("Riflemen")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Conscription", "Player"
+    "Tech", "Nationalism", "Player"
   }
 obsolete_by   = "Marines"
 graphic       = "u.riflemen"
@@ -973,7 +973,7 @@ name          = _("Alpine Troops")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Tactics", "Player"
+    "Tech", "Cavalry Tactics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.alpine_troops"
@@ -1011,7 +1011,7 @@ name          = _("Partisan")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Guerilla Warfare", "Player"
+    "Tech", "Communism", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.partisan"
@@ -1057,7 +1057,7 @@ name          = _("Fanatics")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Guerilla Warfare", "Player"
+    "Tech", "Communism", "Player"
     "Gov",  "Fundamentalism",   "Player"
   }
 obsolete_by   = "None"
@@ -1100,7 +1100,7 @@ name          = _("Marines")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Amphibious Warfare", "Player"
+    "Tech", "Adv. Infantry Tactics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.marines"
@@ -1137,7 +1137,7 @@ name          = _("Paratroopers")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Combined Arms", "Player"
+    "Tech", "Adv. Infantry Tactics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.paratroopers"
@@ -1180,7 +1180,7 @@ name          = _("Mech. Inf.")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Labor Union", "Player"
+    "Tech", "Mass Production", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.mech_inf"
@@ -1219,7 +1219,7 @@ name          = _("Horsemen")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Horseback Riding", "Player"
+    "Tech", "Horse Riding", "Player"
   }
 obsolete_by   = "Knights"
 graphic       = "u.horsemen"
@@ -1256,7 +1256,7 @@ name          = _("Chariot")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "The Wheel", "Player"
+    "Tech", "Horse Riding", "Player"
   }
 obsolete_by   = "Dragoons"
 graphic       = "u.chariot"
@@ -1296,7 +1296,7 @@ name          = _("Elephants")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Polytheism", "Player"
+    "Tech", "Religion", "Player"
   }
 obsolete_by   = "Dragoons"
 graphic       = "u.elephants"
@@ -1332,7 +1332,7 @@ name          = _("Crusaders")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Monotheism", "Player"
+    "Tech", "Theology", "Player"
   }
 obsolete_by   = "Dragoons"
 graphic       = "u.crusaders"
@@ -1368,7 +1368,7 @@ name          = _("Knights")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Chivalry", "Player"
+    "Tech", "Feudalism", "Player"
   }
 obsolete_by   = "Dragoons"
 graphic       = "u.knights"
@@ -1404,7 +1404,7 @@ name          = _("Dragoons")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Leadership", "Player"
+    "Tech", "Cavalry Tactics", "Player"
   }
 obsolete_by   = "Cavalry"
 graphic       = "u.dragoons"
@@ -1439,7 +1439,7 @@ name          = _("Cavalry")
 class         = "Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Tactics", "Player"
+    "Tech", "Cavalry Tactics", "Player"
   }
 obsolete_by   = "Armor"
 graphic       = "u.cavalry"
@@ -1474,7 +1474,7 @@ name          = _("Armor")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Mobile Warfare", "Player"
+    "Tech", "Tank Warfare", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.armor"
@@ -1513,7 +1513,7 @@ name          = _("Catapult")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Mathematics", "Player"
+    "Tech", "Geometry", "Player"
   }
 obsolete_by   = "Cannon"
 graphic       = "u.catapult"
@@ -1555,7 +1555,7 @@ name          = _("Cannon")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Metallurgy", "Player"
+    "Tech", "Cannon Making", "Player"
   }
 obsolete_by   = "Artillery"
 graphic       = "u.cannon"
@@ -1593,7 +1593,7 @@ name          = _("Artillery")
 class         = "Big Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Machine Tools", "Player"
+    "Tech", "Explosives", "Player"
   }
 obsolete_by   = "Howitzer"
 graphic       = "u.artillery"
@@ -1667,7 +1667,7 @@ name          = _("Fighter")
 class         = "Air"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Flight", "Player"
+    "Tech", "Aerodynamics", "Player"
   }
 obsolete_by   = "Stealth Fighter"
 graphic       = "u.fighter"
@@ -1709,7 +1709,7 @@ name          = _("Bomber")
 class         = "Air"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Advanced Flight", "Player"
+    "Tech", "Jet Propulsion", "Player"
   }
 obsolete_by   = "Stealth Bomber"
 graphic       = "u.bomber"
@@ -1756,7 +1756,7 @@ name          = _("Helicopter")
 class         = "Helicopter"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Combined Arms", "Player"
+    "Tech", "Adv. Infantry Tactics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.helicopter"
@@ -1805,7 +1805,7 @@ name          = _("Stealth Fighter")
 class         = "Air"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Stealth", "Player"
+    "Tech", "Advanced Composites", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.stealth_fighter"
@@ -1844,7 +1844,7 @@ name          = _("Stealth Bomber")
 class         = "Air"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Stealth", "Player"
+    "Tech", "Advanced Composites", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.stealth_bomber"
@@ -1883,7 +1883,7 @@ name          = _("Trireme")
 class         = "Trireme"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Map Making", "Player"
+    "Tech", "Shipbuilding", "Player"
   }
 obsolete_by   = "Transport"
 graphic       = "u.trireme"
@@ -1924,7 +1924,7 @@ name          = _("Caravel")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Magnetism", "Player"
+    "Tech", "Hullmaking", "Player"
   }
 obsolete_by   = "Galleon"
 graphic       = "u.caravel"
@@ -1964,7 +1964,7 @@ name          = _("Galleon")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Navigation", "Player"
+    "Tech", "Ocean Faring", "Player"
   }
 obsolete_by   = "Transport"
 graphic       = "u.galleon"
@@ -2002,7 +2002,7 @@ name          = _("Frigate")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Navigation", "Player"
+    "Tech", "Ocean Faring", "Player"
   }
 obsolete_by   = "Ironclad"
 graphic       = "u.frigate"
@@ -2038,7 +2038,7 @@ name          = _("Ironclad")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Steam Engine", "Player"
+    "Tech", "Industrial Revolution", "Player"
   }
 obsolete_by   = "Destroyer"
 graphic       = "u.ironclad"
@@ -2074,7 +2074,7 @@ name          = _("Destroyer")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Engineering", "Player"
+    "Tech", "Physics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.destroyer"
@@ -2117,7 +2117,7 @@ name          = _("Cruiser")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Steel", "Player"
+    "Tech", "Modern Metallurgy", "Player"
   }
 obsolete_by   = "AEGIS Cruiser"
 graphic       = "u.cruiser"
@@ -2152,7 +2152,7 @@ name          = _("AEGIS Cruiser")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Rocketry", "Player"
+    "Tech", "Guided Weapon Systems", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.aegis_cruiser"
@@ -2233,7 +2233,7 @@ name          = _("Submarine")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Combustion", "Player"
+    "Tech", "Oil Refining", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.submarine"
@@ -2273,7 +2273,7 @@ name          = _("SSBN")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Nuclear Fission", "Player"
+    "Tech", "Nuclear Power", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.ssbn"
@@ -2314,7 +2314,7 @@ name          = _("Carrier")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Advanced Flight", "Player"
+    "Tech", "Jet Propulsion", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.carrier"
@@ -2361,7 +2361,7 @@ name          = _("Transport")
 class         = "Sea"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Engineering", "Player"
+    "Tech", "Physics", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.transport"
@@ -2410,7 +2410,7 @@ name          = _("Cruise Missile")
 class         = "Missile"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Rocketry", "Player"
+    "Tech", "Guided Weapon Systems", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.cruise_missile"
@@ -2451,7 +2451,7 @@ name          = _("Nuclear")
 class         = "Missile"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Nuclear Fission", "Player"
+    "Tech", "Nuclear Power", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.nuclear"
@@ -2514,7 +2514,7 @@ name          = _("ICBM")
 class         = "Missile"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Fusion Power", "Player"
+    "Tech", "Fusion", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.icbm"
@@ -2579,7 +2579,7 @@ name          = _("Diplomat")
 class         = "Small Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Alphabet", "Player"
+    "Tech", "Writing", "Player"
   }
 obsolete_by   = "Spy"
 graphic       = "u.diplomat"
@@ -2708,7 +2708,7 @@ name          = _("Spy")
 class         = "Small Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Espionage", "Player"
+    "Tech", "Nationalism", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.spy"
@@ -2840,7 +2840,7 @@ name          = _("Freight")
 class         = "Merchant"
 reqs          =
   { "type", "name", "range"
-    "Tech", "The Corporation", "Player"
+    "Tech", "Corporation", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.freight"
@@ -2877,7 +2877,7 @@ name          = _("Explorer")
 class         = "Small Land"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Seafaring", "Player"
+    "Tech", "Shipbuilding", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.explorer"
@@ -3015,7 +3015,7 @@ name          = _("AWACS")
 class         = "Air"
 reqs          =
   { "type", "name", "range"
-    "Tech", "Advanced Flight", "Player"
+    "Tech", "Jet Propulsion", "Player"
   }
 obsolete_by   = "None"
 graphic       = "u.awacs"

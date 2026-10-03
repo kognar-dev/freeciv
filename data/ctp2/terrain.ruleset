@@ -1342,7 +1342,7 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
-      "Tech", "Refining", "Player", TRUE, FALSE
+      "Tech", "Oil Refining", "Player", TRUE, FALSE
       "TerrainFlag", "Oil", "Tile", TRUE, TRUE
       "Extra", "Mine", "Tile", TRUE, FALSE
       "UnitClass", "Sea", "Local", FALSE, TRUE
@@ -1371,7 +1371,7 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present"
-      "Tech", "Miniaturization", "Player", TRUE
+      "Tech", "Computer", "Player", TRUE
       "Terrain", "Deep Ocean", "Tile", TRUE
     }
 build_time     = 0
@@ -1527,7 +1527,7 @@ rmact_gfx_alt2 = "-"
 ; through "Build Irrigation" action enablers
 reqs           =
     { "type", "name", "range"
-      "Tech", "Refrigeration", "Player"
+      "Tech", "Agricultural Revolution", "Player"
       "Extra", "Irrigation", "Tile"
     }
 build_time     = 0
@@ -1594,7 +1594,7 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
-      "Tech", "Construction", "Player", TRUE, FALSE
+      "Tech", "Concrete", "Player", TRUE, FALSE
       "TerrainClass", "Land", "Tile", TRUE, FALSE
       "UnitFlag", "Fortress", "Local", TRUE, FALSE
       "CityTile", "Center", "Tile", FALSE, TRUE
@@ -1630,7 +1630,7 @@ rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
       "Extra", "Fort", "Tile", TRUE, FALSE
-      "Tech", "Construction", "Player", TRUE, FALSE
+      "Tech", "Concrete", "Player", TRUE, FALSE
       "TerrainClass", "Land", "Tile", TRUE, FALSE
       "UnitFlag", "Fortress", "Local", TRUE, FALSE
       "CityTile", "Center", "Tile", FALSE, TRUE
@@ -1679,7 +1679,7 @@ rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
       "Extra", "Fortress", "Tile", TRUE, FALSE
-      "Tech", "Construction", "Player", TRUE, FALSE
+      "Tech", "Concrete", "Player", TRUE, FALSE
       "Tech", "Feudalism", "Player", TRUE, FALSE
       "TerrainClass", "Land", "Tile", TRUE, FALSE
       "UnitFlag", "Settlers", "Local", TRUE, FALSE
@@ -1719,7 +1719,7 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
-      "Tech", "Radio", "Player", TRUE, FALSE
+      "Tech", "Radar", "Player", TRUE, FALSE
       "TerrainClass", "Land", "Tile", TRUE, FALSE
       "UnitFlag", "Settlers", "Local", TRUE, FALSE
       "CityTile", "Center", "Tile", FALSE, TRUE
@@ -1763,7 +1763,7 @@ rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
       "Extra", "Airstrip", "Tile", TRUE, FALSE
-      "Tech", "Radio", "Player", TRUE, FALSE
+      "Tech", "Radar", "Player", TRUE, FALSE
       "TerrainClass", "Land", "Tile", TRUE, FALSE
       "UnitFlag", "Settlers", "Local", TRUE, FALSE
       "CityTile", "Center", "Tile", FALSE, TRUE
@@ -1807,12 +1807,12 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
-      "Tech", "Radio", "Player", TRUE, FALSE
+      "Tech", "Radar", "Player", TRUE, FALSE
       "TerrainClass", "Oceanic", "Tile", TRUE, FALSE
       "UnitFlag", "Settlers", "Local", TRUE, FALSE
       "CityTile", "Center", "Tile", FALSE, TRUE
     }
-visibility_req = "Radio"
+visibility_req = "Radar"
 build_time     = 3
 removal_time   = 0
 conflicts      = "Oil Platform"
@@ -1857,7 +1857,7 @@ category       = "Bonus"
 rmcauses       = "Pillage"
 rmreqs         =
     { "type", "name",       "range",  "present", "quiet"
-      "Tech", "Polytheism", "Player", TRUE,      FALSE
+      "Tech", "Religion", "Player", TRUE,      FALSE
     }
 rmact_gfx      = "None"
 rmact_gfx_alt  = "-"
@@ -1865,7 +1865,7 @@ rmact_gfx_alt2 = "-"
 graphic        = "extra.transport_hub"
 graphic_alt    = "extra.ruins"
 activity_gfx   = "None"
-visibility_req = "Polytheism"
+visibility_req = "Religion"
 ; Can`t be reverse engineered and built by players.
 buildable      = FALSE
 removal_time   = 3
@@ -1973,7 +1973,7 @@ rmact_gfx_alt  = "-"
 rmact_gfx_alt2 = "-"
 reqs           =
     { "type", "name", "range", "present", "quiet"
-      "Tech", "Superconductors", "Player", TRUE, FALSE
+      "Tech", "Superconductor", "Player", TRUE, FALSE
       "Extra", "Railroad", "Tile", TRUE, FALSE
       "UnitFlag", "Settlers", "Local", TRUE, FALSE
       "UnitClass", "Sea", "Local", FALSE, TRUE

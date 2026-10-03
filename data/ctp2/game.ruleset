@@ -718,7 +718,7 @@ name = _("Goods")
 reqs =
     { "type", "name", "range", "present"
       "Good", "Metal", "City", TRUE
-      "Tech", "Electronics", "Player", FALSE
+      "Tech", "Electricity", "Player", FALSE
     }
 from_pct = 150
 to_pct   = 135
@@ -729,7 +729,7 @@ name = _("Equipment")
 reqs =
     { "type", "name", "range"
       "Good", "Metal", "City"
-      "Tech", "Electronics", "Player"
+      "Tech", "Electricity", "Player"
     }
 from_pct = 200
 to_pct   = 150

@@ -361,7 +361,7 @@ _("\
 
 name        = _("Republic")
 reqs = { "type", "name", "range"
-         "tech", "The Republic", "Player"
+         "tech", "Bureaucracy", "Player"
        }
 graphic     = "gov.republic"
 graphic_alt = "-"

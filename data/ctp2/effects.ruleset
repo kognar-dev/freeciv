@@ -249,7 +249,7 @@ value   = 8
 reqs    =
     { "type", "name", "range"
       "Extra", "Fortress", "Tile"
-      "Tech", "Astronomy", "Player"
+      "Tech", "Optics", "Player"
     }
 
 [effect_airbase_vision]
@@ -385,7 +385,7 @@ type    = "Conquest_Tech_Pct"
 value   = 50
 reqs    =
     { "type", "name",       "range", "present"
-      "Tech", "University", "Player", FALSE
+      "Tech", "Classical Education", "Player", FALSE
     }
 
 [effect_elevator_trade]
@@ -526,7 +526,7 @@ type    = "Move_Bonus"
 value   = 8
 reqs    =
     { "type", "name", "range"
-      "Tech", "Advanced Flight", "Player"
+      "Tech", "Jet Propulsion", "Player"
       "UnitType", "Nuclear", "Local"
     }
 
@@ -536,7 +536,7 @@ type    = "Move_Bonus"
 value   = 8
 reqs    =
     { "type", "name", "range"
-      "Tech", "Rocketry", "Player"
+      "Tech", "Guided Weapon Systems", "Player"
       "UnitType", "Nuclear", "Local"
     }
 
@@ -550,7 +550,7 @@ type    = "Upgrade_Price_Pct"
 value   = -50
 reqs    =
     { "type", "name", "range"
-      "Tech", "Invention", "Player"
+      "Tech", "Age of Reason", "Player"
     }
 
 ; Medicine increases city health
@@ -559,7 +559,7 @@ type    = "Health_Pct"
 value   = 30
 reqs    =
     { "type", "name", "range"
-      "Tech", "Medicine", "Player"
+      "Tech", "Alchemy", "Player"
     }
 
 ; Base -1% food each 1 tile
@@ -607,7 +607,7 @@ value   = 100
 reqs    =
     { "type", "name", "range", "present"
       "OutputType", "Trade", "Local", TRUE
-      "Tech", "The Corporation", "Player", FALSE
+      "Tech", "Corporation", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
     }
 
@@ -1845,7 +1845,7 @@ reqs    =
       "Gov", "Communism", "Player", TRUE
       "Tech", "Communism", "Player", TRUE
       "Tech", "Gunpowder", "Player", TRUE
-      "Tech", "Guerilla Warfare", "World", TRUE
+      "Tech", "Communism", "World", TRUE
       "NationGroup", "Barbarian", "Player", FALSE
     }
 
@@ -1857,7 +1857,7 @@ reqs    =
       "Gov", "Democracy", "Player", TRUE
       "Tech", "Communism", "Player", TRUE
       "Tech", "Gunpowder", "Player", TRUE
-      "Tech", "Guerilla Warfare", "World", TRUE
+      "Tech", "Communism", "World", TRUE
       "NationGroup", "Barbarian", "Player", FALSE
     }
 
@@ -1969,7 +1969,7 @@ type    = "Airlift"
 value   = 1
 reqs    =
     { "type", "name",   "range"
-      "Tech", "Flight", "Player"
+      "Tech", "Aerodynamics", "Player"
     }
 
 ; Base max city size of 8
@@ -2975,7 +2975,7 @@ type    = "Slow_Down_Timeline"
 value   = 1
 reqs    =
     { "type", "name", "range", "survives"
-      "Tech", "Plastics", "World", TRUE
+      "Tech", "Advanced Composites", "World", TRUE
     }
 
 [effect_superconductor_slowdown]
@@ -2983,7 +2983,7 @@ type    = "Slow_Down_Timeline"
 value   = 1
 reqs    =
     { "type", "name", "range", "survives"
-      "Tech", "Superconductors", "World", TRUE
+      "Tech", "Superconductor", "World", TRUE
     }
 
 [effect_spaceflight_slowdown]
@@ -3104,7 +3104,7 @@ type    = "Make_Content"
 value   = 1
 reqs    =
     { "type", "name", "range", "present"
-      "Tech", "Mysticism", "Player", TRUE
+      "Tech", "Drama", "Player", TRUE
       "Building", "Temple", "City", TRUE
       "Gov", "Communism", "Player", FALSE
     }
@@ -3907,7 +3907,7 @@ reqs    =
     { "type", "name", "range", "present", "survives"
       "Building", "United Nations", "World", TRUE, FALSE
       "Building", "Manhattan Project", "World", TRUE, TRUE
-      "Tech", "Nuclear Fission", "Player", TRUE, FALSE
+      "Tech", "Nuclear Power", "Player", TRUE, FALSE
       "Building", "Apollo Program", "World", FALSE, TRUE
     }
 

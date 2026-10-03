@@ -85,7 +85,7 @@ name		= _("Airport")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Radio", "Player"
+      "Tech", "Radar", "Player"
     }
 graphic         = "b.airport"
 graphic_alt     = "-"
@@ -120,7 +120,7 @@ name		= _("Aqueduct")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range", "present"
-      "Tech", "Construction", "Player", TRUE
+      "Tech", "Concrete", "Player", TRUE
       "Extra", "River", "Adjacent", FALSE
       "Terrain", "Lake", "Adjacent", FALSE
     }
@@ -302,7 +302,7 @@ graphic_alt     = "b.barracks_i"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range"
-      "Tech", "Mobile Warfare", "Player"
+      "Tech", "Tank Warfare", "Player"
       "Building", "Barracks III", "City"
     }
 build_cost	= 30
@@ -327,7 +327,7 @@ name		= _("Barracks III")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Mobile Warfare", "Player"
+      "Tech", "Tank Warfare", "Player"
     }
 graphic         = "b.barracks_iii"
 graphic_alt     = "b.barracks_i"
@@ -357,7 +357,7 @@ name		= _("Cathedral")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Monotheism", "Player"
+      "Tech", "Theology", "Player"
       "Building", "Temple", "City"
     }
 graphic         = "b.cathedral"
@@ -415,7 +415,7 @@ name		= _("Coastal Defense")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Navigation", "Player"
+      "Tech", "Ocean Faring", "Player"
       "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic         = "b.coastal_defense"
@@ -444,7 +444,7 @@ rule_name	= "Colosseum"
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Construction", "Player"
+      "Tech", "Concrete", "Player"
     }
 graphic         = "b.colosseum"
 graphic_alt     = "-"
@@ -469,7 +469,7 @@ name		= _("Courthouse")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Code of Laws", "Player"
+      "Tech", "Jurisprudence", "Player"
     }
 graphic         = "b.courthouse"
 graphic_alt     = "-"
@@ -500,7 +500,7 @@ name		= _("Factory")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Industrialization", "Player"
+      "Tech", "Industrial Revolution", "Player"
     }
 graphic         = "b.factory"
 graphic_alt     = "-"
@@ -529,7 +529,7 @@ name		= _("Granary")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Pottery", "Player"
+      "Tech", "Agriculture", "Player"
     }
 graphic         = "b.granary"
 graphic_alt     = "-"
@@ -563,7 +563,7 @@ rule_name       = "Harbour"     ; en_GB spelling used originally
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Seafaring", "Player"
+      "Tech", "Shipbuilding", "Player"
       "TerrainFlag", "Sea", "Adjacent"
     }
 graphic         = "b.harbor"
@@ -589,7 +589,7 @@ name		= _("Hydro Plant")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Electronics", "Player"
+      "Tech", "Electricity", "Player"
       "Building", "Factory", "City"
       "Extra", "River", "Adjacent"
     }
@@ -658,7 +658,7 @@ name		= _("Marketplace")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Currency", "Player"
+      "Tech", "Trade", "Player"
     }
 graphic         = "b.marketplace"
 graphic_alt     = "-"
@@ -707,7 +707,7 @@ name		= _("Mfg. Plant")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Plastics", "Player"
+      "Tech", "Advanced Composites", "Player"
       "Building", "Factory", "City"
     }
 graphic         = "b.mfg_plant"
@@ -789,7 +789,7 @@ name		= _("Offshore Platform")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Miniaturization", "Player"
+      "Tech", "Computer", "Player"
       "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic         = "b.offshore_platform"
@@ -908,7 +908,7 @@ rule_name       = "Mysteries"
 genus           = "SmallWonder"
 reqs            =
     { "type", "name",       "range"
-      "Tech", "Polytheism", "Player"
+      "Tech", "Religion", "Player"
     }
 graphic	        = "b.mystery_school"
 graphic_alt     = "b.temple"
@@ -959,7 +959,7 @@ name		= _("Port Facility")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Amphibious Warfare", "Player"
+      "Tech", "Adv. Infantry Tactics", "Player"
       "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic         = "b.port_facility"
@@ -987,7 +987,7 @@ name		= _("Power Plant")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Refining", "Player"
+      "Tech", "Oil Refining", "Player"
       "Building", "Factory", "City"
     }
 graphic         = "b.power_plant"
@@ -1022,7 +1022,7 @@ name		= _("Recycling Center")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Recycling", "Player"
+      "Tech", "Conservation", "Player"
     }
 graphic         = "b.recycling_center"
 graphic_alt     = "-"
@@ -1049,7 +1049,7 @@ name		= _("Research Lab")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Computers", "Player"
+      "Tech", "Computer", "Player"
       "Building", "University", "City"
     }
 graphic         = "b.research_lab"
@@ -1082,7 +1082,7 @@ name		= _("SAM Battery")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Rocketry", "Player"
+      "Tech", "Guided Weapon Systems", "Player"
     }
 graphic         = "b.sam_battery"
 graphic_alt     = "-"
@@ -1106,7 +1106,7 @@ name		= _("SDI Defense")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Laser", "Player"
+      "Tech", "Superconductor", "Player"
     }
 graphic         = "b.sdi_defense"
 graphic_alt     = "-"
@@ -1134,7 +1134,7 @@ name		= _("Sewer System")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Sanitation", "Player"
+      "Tech", "Adv. Urban Planning", "Player"
       "MinSize", "9", "City"
     }
 graphic         = "b.sewer_system"
@@ -1160,7 +1160,7 @@ name		= _("Solar Plant")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Environmentalism", "Player"
+      "Tech", "Conservation", "Player"
       "Building", "Factory", "City"
     }
 graphic         = "b.solar_plant"
@@ -1201,7 +1201,7 @@ name		= _("Space Component")
 genus		= "Special"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Superconductors", "Player"
+      "Tech", "Superconductor", "Player"
       "Building", "Factory", "City"
       "Building", "Library", "City"
       "Building", "University", "City"
@@ -1233,7 +1233,7 @@ name            = _("Space Elevator Tether")
 genus           = "Improvement"
 reqs            =
     { "type",         "name",           "range",     "present"
-      "Tech",         "Nanomaterials",  "Player",    TRUE
+      "Tech",         "Nano-Assembly",  "Player",    TRUE
       "Building",     "Space Elevator", "Continent", TRUE
       "Building",     "Space Elevator", "City",      FALSE
     }
@@ -1270,7 +1270,7 @@ name		= _("Space Module")
 genus		= "Special"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Environmentalism", "Player"
+      "Tech", "Conservation", "Player"
       "Building", "Factory", "City"
       "Building", "Library", "City"
       "Building", "University", "City"
@@ -1371,7 +1371,7 @@ name		= _("Super Highways")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Automobile", "Player"
+      "Tech", "Internal Combustion", "Player"
     }
 graphic         = "b.super_highways"
 graphic_alt     = "-"
@@ -1405,7 +1405,7 @@ name		= _("Supermarket")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Refrigeration", "Player"
+      "Tech", "Agricultural Revolution", "Player"
     }
 graphic         = "b.supermarket"
 graphic_alt     = "-"
@@ -1431,7 +1431,7 @@ name		= _("Temple")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Ceremonial Burial", "Player"
+      "Tech", "Religion", "Player"
     }
 graphic         = "b.temple"
 graphic_alt     = "-"
@@ -1457,7 +1457,7 @@ name		= _("University")
 genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
-      "Tech", "University", "Player"
+      "Tech", "Classical Education", "Player"
       "Building", "Library", "City"
     }
 graphic         = "b.university"
@@ -1493,7 +1493,7 @@ name            = _("Altar to The Divine Ruler")
 genus           = "GreatWonder"
 reqs            =
     { "type", "name",             "range"
-      "Tech", "Ruler Apotheosis", "Player"
+      "Tech", "Theology", "Player"
     }
 graphic         = "b.altar"
 graphic_alt     = "b.oracle"
@@ -1581,14 +1581,14 @@ name		= _("Chichen Itza")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Warrior Code", "Player"
+      "Tech", "Ballistics", "Player"
     }
 graphic         = "b.chichen_itza"
 graphic_alt     = "b.pyramids"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Metallurgy", "Player", FALSE
+      "Tech", "Cannon Making", "Player", FALSE
     }
 build_cost	= 300
 upkeep		= 0
@@ -1613,7 +1613,7 @@ graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Automobile", "Player", FALSE
+      "Tech", "Internal Combustion", "Player", FALSE
     }
 build_cost	= 200
 upkeep		= 0
@@ -1631,14 +1631,14 @@ name		= _("Copernicus' Observatory")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Astronomy", "Player"
+      "Tech", "Optics", "Player"
     }
 graphic         = "b.copernicus_observatory"
 graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Computers", "Player", FALSE
+      "Tech", "Computer", "Player", FALSE
     }
 build_cost	= 300
 upkeep		= 0
@@ -1656,7 +1656,7 @@ name		= _("Cure For Cancer")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Genetic Engineering", "Player"
+      "Tech", "Genetics", "Player"
     }
 graphic         = "b.cure_for_cancer"
 graphic_alt     = "-"
@@ -1684,7 +1684,7 @@ name		= _("Darwin's Voyage")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Steam Engine", "Player"
+      "Tech", "Industrial Revolution", "Player"
     }
 graphic         = "b.darwins_voyage"
 graphic_alt     = "-"
@@ -1744,7 +1744,7 @@ name            = _("Guidestones")
 genus           = "GreatWonder"
 reqs            =
     { "type", "name",             "range"
-      "Tech", "Environmentalism", "Player"
+      "Tech", "Conservation", "Player"
     }
 graphic         = "b.georgia_guidestones"
 graphic_alt     = "b.port_facility"
@@ -1768,7 +1768,7 @@ name		= _("Great Library")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Literacy", "Player"
+      "Tech", "Classical Education", "Player"
       "Building", "Library", "City"
     }
 graphic         = "b.great_library"
@@ -1798,14 +1798,14 @@ name		= _("Great Wall")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Construction", "Player"
+      "Tech", "Concrete", "Player"
     }
 graphic         = "b.great_wall"
 graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Machine Tools", "Player", FALSE
+      "Tech", "Explosives", "Player", FALSE
     }
 build_cost	= 300
 upkeep		= 0
@@ -1826,7 +1826,7 @@ name		= _("Hanging Gardens")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Pottery", "Player"
+      "Tech", "Agriculture", "Player"
     }
 graphic         = "b.hanging_gardens"
 graphic_alt     = "-"
@@ -1853,7 +1853,7 @@ name		= _("Hoover Dam")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Electronics", "Player"
+      "Tech", "Electricity", "Player"
       "Extra", "River", "Adjacent"
       "Building", "Factory", "City"
     }
@@ -1881,7 +1881,7 @@ name		= _("Isaac Newton's College")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Theory of Gravity", "Player"
+      "Tech", "Physics", "Player"
       "Building", "University", "City"
     }
 graphic         = "b.isaac_newtons_college"
@@ -1933,7 +1933,7 @@ name		= _("King Richard's Crusade")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Chivalry", "Player"
+      "Tech", "Feudalism", "Player"
     }
 graphic         = "b.king_richards_crusade"
 graphic_alt     = "-"
@@ -1962,14 +1962,14 @@ name		= _("Leonardo's Workshop")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Invention", "Player"
+      "Tech", "Age of Reason", "Player"
     }
 graphic         = "b.leonardos_workshop"
 graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Combustion", "Player", FALSE
+      "Tech", "Oil Refining", "Player", FALSE
     }
 build_cost	= 400
 upkeep		= 0
@@ -1986,7 +1986,7 @@ name		= _("Lighthouse")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Map Making", "Player"
+      "Tech", "Shipbuilding", "Player"
       "TerrainFlag", "Sea", "Adjacent"
     }
 graphic         = "b.lighthouse"
@@ -1994,7 +1994,7 @@ graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Engineering", "Player", FALSE
+      "Tech", "Physics", "Player", FALSE
     }
 build_cost	= 200
 upkeep		= 0
@@ -2013,7 +2013,7 @@ name		= _("Magellan's Expedition")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Magnetism", "Player"
+      "Tech", "Hullmaking", "Player"
       "TerrainFlag", "Sea", "Adjacent"
     }
 graphic         = "b.magellans_expedition"
@@ -2040,7 +2040,7 @@ name		= _("Manhattan Project")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Nuclear Fission", "Player"
+      "Tech", "Nuclear Power", "Player"
     }
 graphic         = "b.manhattan_project"
 graphic_alt     = "-"
@@ -2089,7 +2089,7 @@ name		= _("Michelangelo's Chapel")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Monotheism", "Player"
+      "Tech", "Theology", "Player"
       "Building", "Cathedral", "City"
     }
 graphic         = "b.michelangelos_chapel"
@@ -2115,14 +2115,14 @@ name		= _("Mausoleum of Mausolos")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Ceremonial Burial", "Player"
+      "Tech", "Religion", "Player"
     }
 graphic         = "b.mausoleum"
 graphic_alt     = "b.oracle"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Sanitation", "Player", FALSE
+      "Tech", "Adv. Urban Planning", "Player", FALSE
     }
 build_cost	= 200
 upkeep		= 0
@@ -2141,14 +2141,14 @@ name		= _("Statue of Zeus")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Polytheism", "Player"
+      "Tech", "Religion", "Player"
     }
 graphic         = "b.statue_of_zeus"
 graphic_alt     = "b.oracle"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Conscription", "Player", FALSE
+      "Tech", "Nationalism", "Player", FALSE
     }
 build_cost	= 200
 upkeep		= 0
@@ -2169,7 +2169,7 @@ name		= _("Temple of Artemis")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Mysticism", "Player"
+      "Tech", "Drama", "Player"
       "Building", "Temple", "City"
     }
 graphic         = "b.temple_of_artemis"
@@ -2223,7 +2223,7 @@ name		= _("Internet")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Computers", "Player"
+      "Tech", "Computer", "Player"
       "Building", "Research Lab", "City"
     }
 graphic		= "b.internet"
@@ -2253,7 +2253,7 @@ rule_name	= "Shakespeare's Theatre"  ; en_GB spelling used originally
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Sanitation", "Player"
+      "Tech", "Adv. Urban Planning", "Player"
     }
 graphic         = "b.shakespeares_theatre"
 graphic_alt     = "-"
@@ -2280,7 +2280,7 @@ name            = _("Space Elevator")
 genus           = "SmallWonder"
 reqs            =
     { "type",         "name",           "range", "present"
-      "Tech",         "Nanomaterials",  "Player", TRUE
+      "Tech",         "Nano-Assembly",  "Player", TRUE
       "Building",     "Apollo Program", "World",  TRUE
       "Building",     "Space Elevator", "Player", FALSE
       "TerrainClass", "Oceanic",        "City",   TRUE
@@ -2354,7 +2354,7 @@ graphic_alt     = "-"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range", "survives"
-      "Tech", "Mobile Warfare", "Player", FALSE
+      "Tech", "Tank Warfare", "Player", FALSE
     }
 build_cost	= 300
 upkeep		= 0
@@ -2451,7 +2451,7 @@ name		= _("Women's Suffrage")
 genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
-      "Tech", "Conscription", "Player"
+      "Tech", "Nationalism", "Player"
     }
 graphic         = "b.womens_suffrage"
 graphic_alt     = "-"

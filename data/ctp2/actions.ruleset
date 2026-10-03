@@ -827,7 +827,7 @@ actor_reqs    =
       "UnitFlag",     "Spy",                 "Local",  TRUE
       "UnitState",    "OnLivableTile",       "Local",  TRUE
       "MinMoveFrags", "1",                   "Local",  TRUE
-      "Tech",         "Medicine",            "Player", TRUE
+      "Tech",         "Alchemy",            "Player", TRUE
       "Building",     "Guidestones",         "Player", TRUE
       "Building",     "Treuga Dei",          "World",  FALSE
     }
@@ -850,7 +850,7 @@ actor_reqs    =
       "UnitFlag",     "Spy",                 "Local",  TRUE,      FALSE
       "UnitState",    "OnLivableTile",       "Local",  TRUE,      FALSE
       "MinMoveFrags", "1",                   "Local",  TRUE,      FALSE
-      "Tech",         "Medicine",            "Player", TRUE,      FALSE
+      "Tech",         "Alchemy",            "Player", TRUE,      FALSE
       "Building",     "Guidestones",         "Player", TRUE,      FALSE
       "Tech",         "Communism",           "World",  TRUE,      TRUE
     }
@@ -873,7 +873,7 @@ actor_reqs    =
       "DiplRel",      "Foreign",       "Local",  FALSE
       "UnitState",    "OnLivableTile", "Local",  TRUE
       "MinMoveFrags", "1",             "Local",  TRUE
-      "Tech",         "Medicine",      "Player", TRUE
+      "Tech",         "Alchemy",      "Player", TRUE
       "Building",     "Treuga Dei",    "World",  FALSE
     }
 target_reqs   =
@@ -895,7 +895,7 @@ actor_reqs    =
       "DiplRel",      "Foreign",       "Local",  FALSE,     FALSE
       "UnitState",    "OnLivableTile", "Local",  TRUE,      FALSE
       "MinMoveFrags", "1",             "Local",  TRUE,      FALSE
-      "Tech",         "Medicine",      "Player", TRUE,      FALSE
+      "Tech",         "Alchemy",      "Player", TRUE,      FALSE
       "Tech",         "Communism",     "World",  TRUE,      TRUE
     }
 target_reqs   =
@@ -914,7 +914,7 @@ actor_reqs    =
       "DiplRel",      "Foreign",       "Local", TRUE
       "UnitState",    "OnLivableTile", "Local", TRUE
       "MinMoveFrags", "1",             "Local", TRUE
-      "Tech",         "Medicine",      "Player", TRUE
+      "Tech",         "Alchemy",      "Player", TRUE
       "Building",     "Treuga Dei",    "World", FALSE
     }
 target_reqs   =
@@ -934,7 +934,7 @@ actor_reqs    =
       "DiplRel",      "Foreign",       "Local", TRUE,      FALSE
       "UnitState",    "OnLivableTile", "Local", TRUE,      FALSE
       "MinMoveFrags", "1",             "Local", TRUE,      FALSE
-      "Tech",         "Medicine",      "Player", TRUE,     FALSE
+      "Tech",         "Alchemy",      "Player", TRUE,     FALSE
       "Tech",         "Communism",     "World", TRUE,      TRUE
     }
 target_reqs   =
@@ -1357,7 +1357,7 @@ action     = "Nuke Units"
 actor_reqs =
     { "type",         "name",         "range",  "present"
       "UnitFlag",     "TacticalNuke", "Local",  TRUE
-      "Tech",         "Rocketry",     "Player", TRUE
+      "Tech",         "Guided Weapon Systems",     "Player", TRUE
       "MinMoveFrags", "1",            "Local",  TRUE
       "DiplRel",      "War",          "Local",  TRUE
       "Building",     "Treuga Dei",   "World",  FALSE
@@ -1368,7 +1368,7 @@ action     = "Nuke Units"
 actor_reqs =
     { "type",         "name",         "range",  "present", "survives"
       "UnitFlag",     "TacticalNuke", "Local",  TRUE,      FALSE
-      "Tech",         "Rocketry",     "Player", TRUE,      FALSE
+      "Tech",         "Guided Weapon Systems",     "Player", TRUE,      FALSE
       "MinMoveFrags", "1",            "Local",  TRUE,      FALSE
       "DiplRel",      "War",          "Local",  TRUE,      FALSE
       "Tech",         "Communism",    "World",  TRUE,      TRUE
@@ -2242,7 +2242,7 @@ actor_reqs    =
     { "type",          "name",            "range",  "present"
       "UnitClassFlag", "MediumWeight",    "Local",  TRUE
       "UnitState",     "Transporting",    "Local",  FALSE
-      "Tech",          "Advanced Flight", "Player", TRUE
+      "Tech",          "Jet Propulsion", "Player", TRUE
       "Building",      "Airport",         "City",   TRUE
       "MinMoveFrags",  "1",               "Local",  TRUE
       "CityTile",      "Center",          "Tile",   TRUE
@@ -2258,7 +2258,7 @@ actor_reqs    =
     { "type",          "name",         "range",  "present"
       "UnitClassFlag", "HeavyWeight",  "Local",  TRUE
       "UnitState",     "Transporting", "Local",  FALSE
-      "Tech",          "Fusion Power", "Player", TRUE
+      "Tech",          "Fusion", "Player", TRUE
       "Building",      "Airport",      "City",   TRUE
       "MinMoveFrags",  "1",            "Local",  TRUE
       "CityTile",      "Center",       "Tile",   TRUE
@@ -2272,7 +2272,7 @@ target_reqs    =
 action        = "Transform Terrain"
 actor_reqs    =
     { "type",          "name",         "range"
-      "Tech",          "Fusion Power", "Player"
+      "Tech",          "Fusion", "Player"
       "UnitFlag",      "Transform",    "Local"
       "UnitFlag",      "Settlers",     "Local"
     }
@@ -2366,7 +2366,7 @@ action        = "Build Mine"
 actor_reqs    =
     { "type",      "name",            "range"
       "UnitFlag",  "Settlers",        "Local"
-      "Tech",      "Miniaturization", "Player"
+      "Tech",      "Computer", "Player"
     }
 target_reqs    =
     { "type",    "name",            "range",  "present"
