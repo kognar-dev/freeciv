@@ -786,9 +786,7 @@ uk_shield     = 1
 uk_food       = 1
 uk_gold       = 0
 tp_defense    = "Alight"
-flags         = "Shield2Gold", "ShieldToGold", "BadCityDefender", "HasNoZOC",
-                "Provoking", "IronBased", "NonMil"
-roles         = "Ferryboat", "FerryStartUnit"
+flags         = "Shield2Gold", "ShieldToGold", "BadCityDefender", "HasNoZOC", "Provoking", "IronBased"
 
 [unit_knight]
 name          = _("Knight")
