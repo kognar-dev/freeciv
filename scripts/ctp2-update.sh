@@ -25,7 +25,7 @@ main() {
   set -euo pipefail
 
   local repo_url="${CTP2_REPO_URL:-https://github.com/kognar-dev/freeciv.git}"
-  local branch="${CTP2_BRANCH:-claude/sweet-wozniak-6ym99r}"
+  local branch="${CTP2_BRANCH:-3.2.6}"
   local repo_dir="${CTP2_REPO_DIR:-$HOME/src/freeciv-ctp2}"
   local prefix="${CTP2_PREFIX:-$HOME/fc-ctp2}"
   local clients="${CTP2_CLIENTS-gtk4}"

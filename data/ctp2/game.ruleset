@@ -58,7 +58,7 @@ capabilities = "std-terrains"
 
 [options]
 global_init_techs = ""
-global_init_buildings = "Palace"
+global_init_buildings = "Capitol"
 
 [tileset]
 ; If preferred tileset is set, clients that support the feature will suggest
@@ -471,7 +471,7 @@ effects        = "DestroyBuilding"
 name           = _("Industrial Accident")
 reqs           =
     { "type", "name", "range"
-      "Building", "Mfg. Plant", "City"
+      "Building", "Robotic Plant", "City"
     }
 frequency      = 10
 effects        = "ReducePopulation", "Pollution"
