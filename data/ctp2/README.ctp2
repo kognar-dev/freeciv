@@ -293,8 +293,12 @@ reloaded.
 Known limitations
 -----------------
 
-- The AI never spends infrapoints, so Workers are still available and
-  the AI keeps using them. Human players may use both.
+- Workers are still available, and both the AI and human players can
+  use them besides Public Works. With the server of this fork (see
+  "Installing and updating", --build), the AI also spends its
+  infrapoints on the tile improvements it values most per point and
+  sets the Public Works Tax accordingly. A stock Freeciv 3.2 server's
+  AI never spends infrapoints.
 - The AI does not build or use the special units.
 - CTP2 armies (stacks of up to 12 units fighting together, with
   flanking and ranged rows) need engine changes and are not part of
@@ -307,8 +311,8 @@ Roadmap
 1. Policies and Public Works (done).
 2. CTP2 technology tree, units, special units, buildings, wonders,
    governments, city radius and Gaia Controller victory (done).
-3. Feats of Wonder (this version). The readiness delay is the
+3. Feats of Wonder (done). The readiness delay is the
    minimum time of the Demobilization policy, and CTP2 ruins are
    Freeciv huts.
-4. Engine work in this fork: armies and CTP2 combat, AI use of Public
-   Works.
+4. Engine work in this fork: AI use of Public Works (this version),
+   then armies and CTP2 combat.

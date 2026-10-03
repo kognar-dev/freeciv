@@ -42,6 +42,7 @@
 #include "pf_tools.h"
 
 /* server */
+#include "hand_gen.h"
 #include "citytools.h"
 #include "maphand.h"
 #include "plrhand.h"
@@ -68,6 +69,9 @@
  * values are used for comparison by the AI in trying to calculate the
  * goodness of building worker units. */
 #define WORKER_FACTOR 1024
+
+/* Upper limit of AI infrastructure placements per turn. */
+#define ADV_INFRA_MAX_PLACE_PER_TURN 20
 
 struct settlermap {
   int enroute; /* unit ID of settler en route to this tile */
@@ -1159,6 +1163,94 @@ bool adv_settler_safe_tile(const struct civ_map *nmap,
 }
 
 /**********************************************************************//**
+  Spend the infrapoints of an AI player on tile improvements.
+
+  Every placeable extra on the tiles of the player's cities is valued like
+  workers value building it (change in tile value, plus the road bonus for
+  roads), and the extra giving the most value per infrapoint is placed,
+  until no improvement is worth it or the infrapoints run out. Tiles that
+  a worker is already heading to are left to the worker.
+**************************************************************************/
+static void adv_place_infrastructure(const struct civ_map *nmap,
+                                     struct player *pplayer,
+                                     struct settlermap *state)
+{
+  int placed;
+
+  if (!terrain_control.infrapoints) {
+    return;
+  }
+
+  for (placed = 0; placed < ADV_INFRA_MAX_PLACE_PER_TURN; placed++) {
+    struct tile *best_tile = NULL;
+    struct extra_type *best_extra = NULL;
+    adv_want best_value = 0;
+
+    city_list_iterate(pplayer->cities, pcity) {
+      int radius_sq = city_map_radius_sq_get(pcity);
+
+      city_tile_iterate_index(nmap, radius_sq, city_tile(pcity),
+                              ptile, cindex) {
+        struct city *worked = tile_worked(ptile);
+        adv_want oldv;
+
+        if (state[tile_index(ptile)].enroute != -1
+            || (worked != NULL && worked != pcity)
+            || !map_is_known_and_seen(ptile, pplayer, V_MAIN)) {
+          /* A worker is coming, another city evaluates the tile,
+           * or we can't place there. */
+          continue;
+        }
+
+        oldv = city_tile_value(pcity, ptile, 0, 0);
+
+        extra_type_iterate(pextra) {
+          adv_want gain;
+          struct road_type *proad;
+
+          if (pextra->infracost <= 0
+              || pextra->infracost > pplayer->economic.infra_points
+              || !player_can_place_extra(pextra, pplayer, ptile)) {
+            continue;
+          }
+
+          gain = adv_city_worker_extra_get(pcity, cindex, pextra) - oldv;
+
+          proad = extra_road_get(pextra);
+          if (proad != NULL && road_provides_move_bonus(proad)) {
+            gain += adv_settlers_road_bonus(nmap, ptile, proad);
+          }
+          if (worked == NULL) {
+            /* Nobody gets the benefit yet. */
+            gain /= 2;
+          }
+
+          if (gain > 0 && gain / pextra->infracost > best_value) {
+            best_value = gain / pextra->infracost;
+            best_tile = ptile;
+            best_extra = pextra;
+          }
+        } extra_type_iterate_end;
+      } city_tile_iterate_index_end;
+    } city_list_iterate_end;
+
+    if (best_tile == NULL) {
+      break;
+    }
+
+    log_debug("%s places %s at (%d, %d) for %d infrapoints",
+              player_name(pplayer), extra_rule_name(best_extra),
+              TILE_XY(best_tile), best_extra->infracost);
+    handle_player_place_infra(pplayer, tile_index(best_tile),
+                              extra_number(best_extra));
+    if (best_tile->placing != best_extra) {
+      /* Placing failed, don't try again this turn. */
+      break;
+    }
+  }
+}
+
+/**********************************************************************//**
   Run through all the players settlers and let those on ai.control work 
   automagically.
 **************************************************************************/
@@ -1242,6 +1334,11 @@ void auto_settlers_player(struct player *pplayer)
       }
     }
   } unit_list_iterate_safe_end;
+  if (is_ai(pplayer)) {
+    /* Workers have chosen their tasks; spend infrapoints on the rest. */
+    adv_place_infrastructure(nmap, pplayer, state);
+  }
+
   /* Reset auto settler state for the next run. */
   if (is_ai(pplayer)) {
     CALL_PLR_AI_FUNC(settler_reset, pplayer, pplayer);
