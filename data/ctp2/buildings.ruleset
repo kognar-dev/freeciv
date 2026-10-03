@@ -1925,3 +1925,367 @@ You can build up to 4 Space Modules of each kind.\
 Before you can build any spaceship parts, the Apollo Program wonder\
  must have been built by any player.\
 ")
+
+[building_feat_concrete]
+name		= _("Feat: Concrete")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_concrete"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Concrete. For 15 turns it\
+ gives +5% shield production in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_gunpowder]
+name		= _("Feat: Gunpowder")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_gunpowder"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Gunpowder. For 25 turns it\
+ gives +5% attack strength for all units, making enemy defenses less effective. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_mass_production]
+name		= _("Feat: Mass Production")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_mass_production"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Mass Production. For 15 turns it\
+ gives +5% shield production in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_computer]
+name		= _("Feat: Computer")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_computer"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Computer. For 15 turns it\
+ gives +5% science in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_robotics]
+name		= _("Feat: Robotics")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_robotics"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Robotics. For 15 turns it\
+ gives +5% shield production in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_life_extension]
+name		= _("Feat: Life Extension")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_life_extension"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to discover Life Extension. For 15 turns it\
+ gives 2 more content citizens in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_theaters]
+name		= _("Feat: Theaters")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_theaters"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization with a Theater in 8 cities. For 15 turns it\
+ gives 5 more content citizens in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_brokerages]
+name		= _("Feat: Brokerages")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_brokerages"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization with a Brokerage in 10 cities. For 20 turns it\
+ gives +10% gold in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_internet]
+name		= _("Feat: Internet")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_internet"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization with a Computer Center in 12 cities. For 25 turns it\
+ gives +10% science in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_syndicate]
+name		= _("Feat: Syndicate")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_syndicate"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization with a Television in 15 cities. For 25 turns it\
+ gives 5 more content citizens in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_orbital_labs]
+name		= _("Feat: Orbital Labs")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_orbital_labs"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization with an Orbital Laboratory in 20 cities. For 25 turns it\
+ gives +10% science in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_sailed_around_world]
+name		= _("Feat: Sailed Around the World")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_sailed_around_world"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization whose ship sails around the world (visits every column of a map that wraps east-west). For 25 turns it\
+ gives +1 movement for all ships. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_conquered_by_force]
+name		= _("Feat: Conquered by Force")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_conquered_by_force"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to conquer the last city of a civilization that once had at least 5 cities. For 25 turns it\
+ gives units recover 10% more hit points per turn. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")
+
+[building_feat_city_recaptured]
+name		= _("Feat: City Recaptured")
+genus		= "SmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "MinTechs", "1000", "Player"
+    }
+graphic         = "b.feat_city_recaptured"
+graphic_alt     = "b.palace"
+graphic_alt2    = "-"
+obsolete_by	=
+    { "type", "name", "range"
+    }
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "b_generic"
+sound_alt2      = "-"
+helptext	= _("\
+Call to Power II Feat of Wonder, accomplished by being the first civilization to recapture a city it founded. For 10 turns it\
+ gives 1 more content citizen in every city. This is not a real building: it appears in the capital\
+ of the civilization that accomplished the feat and disappears when the\
+ feat ends. Only the first civilization gets each feat.\
+")

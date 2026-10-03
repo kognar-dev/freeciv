@@ -255,6 +255,41 @@ implemented in script.lua. The Freeciv spaceship is still available as
 an alternative science victory.
 
 
+Feats of Wonder
+---------------
+
+As in CTP2, the first civilization to accomplish a feat gets a bonus
+for some turns. Nobody else can get that feat afterwards.
+
+  Feat                      Accomplished by                Turns  Bonus
+  Concrete                  first to discover Concrete      15  +5% shields
+  Gunpowder                 first to discover Gunpowder     25  +5% attack
+  Mass Production           first to discover it            15  +5% shields
+  Computer                  first to discover Computer      15  +5% science
+  Robotics                  first to discover Robotics      15  +5% shields
+  Life Extension            first to discover it            15  2 content
+  Theaters                  Theater in 8 cities             15  5 content
+  Brokerages                Brokerage in 10 cities          20  +10% gold
+  Internet                  Computer Center in 12 cities    25  +10% science
+  Syndicate                 Television in 15 cities         25  5 content
+  Orbital Labs              Orbital Laboratory in 20 cities 25  +10% science
+  Sailed Around the World   a ship visits every column of   25  +1 move for
+                            a map that wraps east-west          ships
+  Conquered by Force        taking the last city of a       25  +10% hit
+                            civilization that once had          point
+                            5 cities                            recovery
+  City Recaptured           recapturing a city you founded  10  1 content
+
+Content bonuses apply to every city. CTP2 makes enemy city walls less
+effective after Gunpowder; here the attack bonus stands in for that.
+For Conquered by Force, CTP2 adds hit points; here units heal faster.
+
+The bonus is a "Feat: ..." small wonder that script.lua keeps in the
+capital of the civilization while the feat lasts; it can not be built.
+Progress towards sailing around the world is lost when a game is
+reloaded.
+
+
 Known limitations
 -----------------
 
@@ -271,8 +306,9 @@ Roadmap
 
 1. Policies and Public Works (done).
 2. CTP2 technology tree, units, special units, buildings, wonders,
-   governments, city radius and Gaia Controller victory (this
-   version).
-3. Lua: Feats of Wonder, readiness delay, ruins.
+   governments, city radius and Gaia Controller victory (done).
+3. Feats of Wonder (this version). The readiness delay is the
+   minimum time of the Demobilization policy, and CTP2 ruins are
+   Freeciv huts.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.

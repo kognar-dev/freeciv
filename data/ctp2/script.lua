@@ -808,3 +808,229 @@ function ctp2_specials_turn(turn, year)
 end
 
 signal.connect("turn_begin", "ctp2_specials_turn")
+
+-- Call to Power II Feats of Wonder.
+-- Only the first civilization to accomplish a feat gets it. Its bonus is
+-- a "Feat: ..." small wonder (effects.ruleset) kept in that
+-- civilization's capital for a number of turns. State is kept in global
+-- numbers (ctp2_feat_by_<n> = player id + 1, ctp2_feat_until_<n> = last
+-- turn of the bonus, -1 once it ended) so that it is saved with the game.
+
+local ctp2_feats = {
+  { name = "Concrete", turns = 15, tech = "Concrete" },
+  { name = "Gunpowder", turns = 25, tech = "Gunpowder" },
+  { name = "Mass Production", turns = 15, tech = "Mass Production" },
+  { name = "Computer", turns = 15, tech = "Computer" },
+  { name = "Robotics", turns = 15, tech = "Robotics" },
+  { name = "Life Extension", turns = 15, tech = "Life Extension" },
+  { name = "Theaters", turns = 15, building = "Theater", count = 8 },
+  { name = "Brokerages", turns = 20, building = "Brokerage", count = 10 },
+  { name = "Internet", turns = 25, building = "Computer Center", count = 12 },
+  { name = "Syndicate", turns = 25, building = "Television", count = 15 },
+  { name = "Orbital Labs", turns = 25, building = "Orbital Laboratory",
+    count = 20 },
+  { name = "Sailed Around the World", turns = 25, sailed = true },
+  { name = "Conquered by Force", turns = 25, conquered = 5 },
+  { name = "City Recaptured", turns = 10, recaptured = true },
+}
+
+local function ctp2_feat_building(feat)
+  return find.building_type("Feat: " .. feat.name)
+end
+
+local function ctp2_feat_city(player)
+  local capital = player:primary_capital()
+  if capital ~= nil then
+    return capital
+  end
+  for city in player:cities_iterate() do
+    return city
+  end
+  return nil
+end
+
+local function ctp2_feat_achieved(n)
+  return (_G[ctp2_var("ctp2_feat_by_", n)] or 0) > 0
+end
+
+function ctp2_feat_award(n, player)
+  local feat = ctp2_feats[n]
+
+  if ctp2_feat_achieved(n) then
+    return
+  end
+  _G[ctp2_var("ctp2_feat_by_", n)] = math.floor(player.id) + 1
+  _G[ctp2_var("ctp2_feat_until_", n)] = game.current_turn() + feat.turns
+
+  local city = ctp2_feat_city(player)
+  if city ~= nil then
+    city:create_building(ctp2_feat_building(feat))
+  end
+  notify.all(_("Feat of Wonder: the %s have accomplished %s!"),
+             player.nation:plural_translation(), _(feat.name))
+  notify.event(player, nil, E.WONDER_BUILD,
+               _("Our Feat of Wonder %s gives us a bonus for %d turns."),
+               _(feat.name), feat.turns)
+end
+
+local function ctp2_feat_remove(feat, player)
+  local building = ctp2_feat_building(feat)
+  for city in player:cities_iterate() do
+    if city:has_building(building) then
+      city:remove_building(building)
+    end
+  end
+end
+
+-- Keep the feat buildings where they belong and end expired feats.
+function ctp2_feats_turn(turn, year)
+  for n, feat in ipairs(ctp2_feats) do
+    local by = _G[ctp2_var("ctp2_feat_by_", n)] or 0
+    local untl = _G[ctp2_var("ctp2_feat_until_", n)] or -1
+
+    if by > 0 and untl >= 0 then
+      local player = find.player(by - 1)
+      if player == nil then
+        _G[ctp2_var("ctp2_feat_until_", n)] = -1
+      elseif turn > untl then
+        ctp2_feat_remove(feat, player)
+        _G[ctp2_var("ctp2_feat_until_", n)] = -1
+        notify.event(player, nil, E.WONDER_OBSOLETE,
+                     _("The bonus of our Feat of Wonder %s has ended."),
+                     _(feat.name))
+      else
+        local building = ctp2_feat_building(feat)
+        local found = false
+        for city in player:cities_iterate() do
+          if city:has_building(building) then
+            found = true
+          end
+        end
+        if not found then
+          -- Small wonders are lost with their city: move it.
+          local city = ctp2_feat_city(player)
+          if city ~= nil then
+            city:create_building(building)
+          end
+        end
+      end
+    end
+  end
+
+  -- Remember the largest size of every civilization, for
+  -- "Conquered by Force".
+  for player in players_iterate() do
+    local var = ctp2_var("ctp2_max_cities_", player.id)
+    _G[var] = math.max(_G[var] or 0, player:num_cities())
+  end
+end
+
+signal.connect("turn_begin", "ctp2_feats_turn")
+
+function ctp2_feats_tech(tech, player, source)
+  local name = tech:rule_name()
+
+  for n, feat in ipairs(ctp2_feats) do
+    if feat.tech == name and not ctp2_feat_achieved(n) then
+      local first = true
+      for other in players_iterate() do
+        if other ~= player and other:knows_tech(tech) then
+          first = false
+        end
+      end
+      if first then
+        ctp2_feat_award(n, player)
+      end
+    end
+  end
+end
+
+signal.connect("tech_researched", "ctp2_feats_tech")
+
+function ctp2_feats_building(building, city)
+  local name = building:rule_name()
+
+  for n, feat in ipairs(ctp2_feats) do
+    if feat.building == name and not ctp2_feat_achieved(n) then
+      local count = 0
+      for other in city.owner:cities_iterate() do
+        if other:has_building(building) then
+          count = count + 1
+        end
+      end
+      if count >= feat.count then
+        ctp2_feat_award(n, city.owner)
+      end
+    end
+  end
+end
+
+signal.connect("building_built", "ctp2_feats_building")
+
+function ctp2_feats_city_transferred(city, loser, winner, reason)
+  if reason ~= "conquest" then
+    return
+  end
+  for n, feat in ipairs(ctp2_feats) do
+    if not ctp2_feat_achieved(n) then
+      if feat.recaptured and city.original == winner then
+        ctp2_feat_award(n, winner)
+      elseif feat.conquered and loser:num_cities() == 0
+             and (_G[ctp2_var("ctp2_max_cities_", loser.id)] or 0)
+                 >= feat.conquered then
+        ctp2_feat_award(n, winner)
+      end
+    end
+  end
+end
+
+signal.connect("city_transferred", "ctp2_feats_city_transferred")
+
+-- Sailing around the world: a ship that visits every column of a map
+-- that wraps east-west. Progress is not saved with the game.
+local ctp2_sail_columns = {}
+local ctp2_sail_xsize = nil
+
+local ctp2_sail_feat = nil
+for n, feat in ipairs(ctp2_feats) do
+  if feat.sailed then
+    ctp2_sail_feat = n
+  end
+end
+
+function ctp2_feats_unit_moved(unit, src_tile, dst_tile)
+  local n = ctp2_sail_feat
+
+  if ctp2_feat_achieved(n)
+     or dst_tile.terrain:class_name() ~= "Oceanic" then
+    return
+  end
+  if ctp2_sail_xsize == nil then
+    local wrap = server.setting.get("wrap") or ""
+    if string.find(wrap, "WRAPX") then
+      ctp2_sail_xsize = tonumber(server.setting.get("xsize")) or 0
+    else
+      ctp2_sail_xsize = 0
+    end
+  end
+  if ctp2_sail_xsize <= 0 then
+    return
+  end
+
+  local id = math.floor(unit.id)
+  local seen = ctp2_sail_columns[id]
+  if seen == nil then
+    seen = { count = 0 }
+    ctp2_sail_columns[id] = seen
+  end
+  local column = math.floor(dst_tile.id) % ctp2_sail_xsize
+  if not seen[column] then
+    seen[column] = true
+    seen.count = seen.count + 1
+    if seen.count >= ctp2_sail_xsize then
+      ctp2_feat_award(n, unit.owner)
+    end
+  end
+end
+
+signal.connect("unit_moved", "ctp2_feats_unit_moved")

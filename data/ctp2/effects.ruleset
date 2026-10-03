@@ -5337,3 +5337,136 @@ reqs    =
     { "type",   "name",          "range"
       "Action", "User Action 4", "Local"
     }
+
+; Call to Power II Feats of Wonder. script.lua places these buildings in
+; the capital of the first civilization to accomplish the feat and removes
+; them when the feat ends. They can not be built.
+
+[effect_ctp2_feat_concrete_0]
+type    = "Output_Bonus"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Concrete", "Player"
+      "OutputType", "Shield", "Local"
+    }
+
+[effect_ctp2_feat_gunpowder_0]
+type    = "Attack_Bonus"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Gunpowder", "Player"
+    }
+
+[effect_ctp2_feat_mass_production_0]
+type    = "Output_Bonus"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Mass Production", "Player"
+      "OutputType", "Shield", "Local"
+    }
+
+[effect_ctp2_feat_computer_0]
+type    = "Output_Bonus"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Computer", "Player"
+      "OutputType", "Science", "Local"
+    }
+
+[effect_ctp2_feat_robotics_0]
+type    = "Output_Bonus"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Robotics", "Player"
+      "OutputType", "Shield", "Local"
+    }
+
+[effect_ctp2_feat_life_extension_0]
+type    = "Make_Content"
+value   = 2
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Life Extension", "Player"
+    }
+
+[effect_ctp2_feat_theaters_0]
+type    = "Make_Content"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Theaters", "Player"
+    }
+
+[effect_ctp2_feat_brokerages_0]
+type    = "Output_Bonus"
+value   = 10
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Brokerages", "Player"
+      "OutputType", "Gold", "Local"
+    }
+
+[effect_ctp2_feat_internet_0]
+type    = "Output_Bonus"
+value   = 10
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Internet", "Player"
+      "OutputType", "Science", "Local"
+    }
+
+[effect_ctp2_feat_syndicate_0]
+type    = "Make_Content"
+value   = 5
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Syndicate", "Player"
+    }
+
+[effect_ctp2_feat_orbital_labs_0]
+type    = "Output_Bonus"
+value   = 10
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Orbital Labs", "Player"
+      "OutputType", "Science", "Local"
+    }
+
+[effect_ctp2_feat_sailed_around_world_0]
+type    = "Move_Bonus"
+value   = 1
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Sailed Around the World", "Player"
+      "UnitClass", "Sea", "Local"
+    }
+
+[effect_ctp2_feat_sailed_around_world_1]
+type    = "Move_Bonus"
+value   = 1
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Sailed Around the World", "Player"
+      "UnitClass", "Trireme", "Local"
+    }
+
+[effect_ctp2_feat_conquered_by_force_0]
+type    = "HP_Regen"
+value   = 10
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: Conquered by Force", "Player"
+    }
+
+[effect_ctp2_feat_city_recaptured_0]
+type    = "Make_Content"
+value   = 1
+reqs    =
+    { "type", "name", "range"
+      "Building", "Feat: City Recaptured", "Player"
+    }
