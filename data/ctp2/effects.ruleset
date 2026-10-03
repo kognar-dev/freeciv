@@ -523,6 +523,7 @@ reqs    =
     { "type", "name", "range", "present"
       "OutputType", "Trade", "Local", TRUE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
     }
 
 ; 1 + 1 => -2% each tile without advanced tech / govs
@@ -534,6 +535,7 @@ reqs    =
       "OutputType", "Trade", "Local", TRUE
       "Tech", "Corporation", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
     }
 
 [effect_corruption_distance_republic]
@@ -542,6 +544,15 @@ value   = 100
 reqs    =
     { "type", "name", "range"
       "Gov", "Republic", "Player"
+    }
+
+; Total = 0 for Communism
+[effect_corruption_distance_republic_technocracy]
+type    = "Output_Waste_By_Rel_Distance"
+value   = 100
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Technocracy", "Player"
     }
 
 ; Total = 0 for Communism
@@ -555,81 +566,16 @@ reqs    =
     }
 
 ; Total = 0 for Federation with The Corporation, -1% for Federation alone
-[effect_corruption_distance_federation]
+[effect_corruption_distance_communism_fascism]
 type    = "Output_Waste_By_Distance"
 value   = -100
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Federation", "Player", TRUE
+      "Gov", "Fascism", "Player", TRUE
       "OutputType", "Trade", "Local", FALSE
     }
 
-; Corruption + waste = 30% for all govs
-
-[effect_corruption_tribal]
-type    = "Output_Waste"
-value   = 30
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Tribal", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_despotism]
-type    = "Output_Waste"
-value   = 20
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Despotism", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_monarchy]
-type    = "Output_Waste"
-value   = 10
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Monarchy", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_communism]
-type    = "Output_Waste"
-value   = 30
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Communism", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_fundamentalism]
-type    = "Output_Waste"
-value   = 15
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Fundamentalism", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_republic]
-type    = "Output_Waste"
-value   = 25
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Republic", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-[effect_corruption_democracy]
-type    = "Output_Waste"
-value   = 5
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Democracy", "Player", TRUE
-      "OutputType", "Trade", "Local", FALSE
-    }
-
-; base -1% shields each tile
+; Total = 0 for Federation with The Corporation, -1% for Federation alone
 [effect_waste_distance]
 type    = "Output_Waste_By_Distance"
 value   = 100
@@ -647,7 +593,7 @@ reqs    =
       "OutputType", "Shield", "Local", TRUE
       "Tech", "Trade", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
-      "Gov", "Federation", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
     }
 
 ; 1 - 1 = 0% with Communism
@@ -661,78 +607,16 @@ reqs    =
     }
 
 ; 1 - 1 = 0% with Federation
-[effect_waste_distance_federation]
+[effect_waste_distance_communism_fascism]
 type    = "Output_Waste_By_Distance"
 value   = -100
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Federation", "Player", TRUE
+      "Gov", "Fascism", "Player", TRUE
       "OutputType", "Shield", "Local", FALSE
     }
 
-[effect_waste_anarchy]
-type    = "Output_Waste"
-value   = 30
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Anarchy", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_despotism]
-type    = "Output_Waste"
-value   = 10
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Despotism", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_monarchy]
-type    = "Output_Waste"
-value   = 20
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Monarchy", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_fundamentalism]
-type    = "Output_Waste"
-value   = 15
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Fundamentalism", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_federation]
-type    = "Output_Waste"
-value   = 30
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Federation", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_republic]
-type    = "Output_Waste"
-value   = 5
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Republic", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
-[effect_waste_democracy]
-type    = "Output_Waste"
-value   = 25
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Democracy", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
+; 1 - 1 = 0% with Federation
 [effect_tech_upkeep_anarchy]
 type    = "Tech_Upkeep_Free"
 value   = 99
@@ -757,19 +641,28 @@ reqs    =
       "Gov", "Communism", "Player", TRUE
     }
 
+[effect_building_upkeep_communism_fascism]
+type    = "Upkeep_Free"
+value   = 1
+reqs    =
+    { "type", "name", "range", "quiet"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
 [effect_shield2gold]
 type    = "Shield2Gold_Factor"
 value   = 100
 reqs    =
     { "type",         "name",            "range", "present"
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
 ;      "Gov", "Despotism", "Player", FALSE
 ;      "Gov", "Monarchy", "Player", FALSE
 ;      "Gov", "Fundamentalism", "Player", FALSE
 ;      "Gov", "Federation", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
 ;      "Gov", "Democracy", "Player", FALSE
     }
 
@@ -780,13 +673,14 @@ reqs    =
     { "type", "name", "range", "present"
       "OutputType", "Gold", "Local", TRUE
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
 ;      "Gov", "Despotism", "Player", FALSE
 ;      "Gov", "Monarchy", "Player", FALSE
 ;      "Gov", "Fundamentalism", "Player", FALSE
 ;      "Gov", "Federation", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
 ;      "Gov", "Democracy", "Player", FALSE
     }
 
@@ -798,13 +692,14 @@ reqs    =
     { "type", "name", "range", "present"
       "OutputType", "Gold", "Local", TRUE
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
-      "Gov", "Despotism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
+      "Gov", "Tyranny", "Player", FALSE
       "Gov", "Monarchy", "Player", FALSE
 ;      "Gov", "Fundamentalism", "Player", FALSE
 ;      "Gov", "Federation", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
 ;      "Gov", "Democracy", "Player", FALSE
     }
 
@@ -817,12 +712,14 @@ reqs    =
 ;      "Gov", "Anarchy", "Player", FALSE
 ;      "Gov", "Tribal", "Player", FALSE
 ;      "Gov", "Communism", "Player", FALSE
-      "Gov", "Despotism", "Player", FALSE
+      "Gov", "Tyranny", "Player", FALSE
       "Gov", "Monarchy", "Player", FALSE
-      "Gov", "Fundamentalism", "Player", FALSE
-      "Gov", "Federation", "Player", FALSE
+      "Gov", "Theocracy", "Player", FALSE
 ;      "Gov", "Republic", "Player", FALSE
       "Gov", "Democracy", "Player", FALSE
+      "Gov", "Corporate Republic", "Player", FALSE
+      "Gov", "Ecotopia", "Player", FALSE
+      "Gov", "Virtual Democracy", "Player", FALSE
     }
 
 [effect_base_unit_upkeep_food]
@@ -839,26 +736,19 @@ value   = 1
 reqs   =
     { "type", "name", "range", "present"
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
 ;      "Gov", "Communism", "Player", FALSE
-      "Gov", "Despotism", "Player", FALSE
+      "Gov", "Tyranny", "Player", FALSE
 ;      "Gov", "Monarchy", "Player", FALSE
 ;      "Gov", "Fundamentalism", "Player", FALSE
 ;      "Gov", "Federation", "Player", FALSE
 ;      "Gov", "Republic", "Player", FALSE
       "Gov", "Democracy", "Player", FALSE
+      "Gov", "Corporate Republic", "Player", FALSE
+      "Gov", "Ecotopia", "Player", FALSE
+      "Gov", "Virtual Democracy", "Player", FALSE
     }
 
 ; exclusive with above
-[effect_unit_unhappiness_democracy]
-type    = "Unhappy_Factor"
-value   = 2
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Democracy", "Player", TRUE
-    }
-
-; ...except Women's Suffrage reduces it back to Republic levels
 [effect_rations_content]
 type    = "City_Unhappy_Size"
 value   = 1
@@ -989,14 +879,16 @@ value   = 1
 reqs   =
     { "type", "name", "range", "present"
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
-      "Gov", "Despotism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
+      "Gov", "Tyranny", "Player", FALSE
       "Gov", "Monarchy", "Player", FALSE
-      "Gov", "Fundamentalism", "Player", FALSE
-      "Gov", "Federation", "Player", FALSE
+      "Gov", "Theocracy", "Player", FALSE
 ;      "Gov", "Republic", "Player", FALSE
       "Gov", "Democracy", "Player", FALSE
+      "Gov", "Corporate Republic", "Player", FALSE
+      "Gov", "Ecotopia", "Player", FALSE
+      "Gov", "Virtual Democracy", "Player", FALSE
     }
 
 ; Govs with 2 free units (exclusive with previous)
@@ -1008,11 +900,13 @@ reqs   =
 ;      "Gov", "Anarchy", "Player", FALSE
 ;      "Gov", "Tribal", "Player", FALSE
       "Gov", "Communism", "Player", FALSE
+      "Gov", "Fascism", "Player", FALSE
 ;      "Gov", "Despotism", "Player", FALSE
       "Gov", "Monarchy", "Player", FALSE
 ;      "Gov", "Fundamentalism", "Player", FALSE
 ;      "Gov", "Federation", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
 ;      "Gov", "Democracy", "Player", FALSE
     }
 
@@ -1023,14 +917,16 @@ value   = 3
 reqs   =
     { "type", "name", "range", "present"
       "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
 ;      "Gov", "Communism", "Player", FALSE
-      "Gov", "Despotism", "Player", FALSE
+      "Gov", "Tyranny", "Player", FALSE
 ;      "Gov", "Monarchy", "Player", FALSE
-      "Gov", "Fundamentalism", "Player", FALSE
-      "Gov", "Federation", "Player", FALSE
+      "Gov", "Theocracy", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
       "Gov", "Democracy", "Player", FALSE
+      "Gov", "Corporate Republic", "Player", FALSE
+      "Gov", "Ecotopia", "Player", FALSE
+      "Gov", "Virtual Democracy", "Player", FALSE
     }
 
 ; normally 2 for Democracy, but 1 of these not needed with Women's Suffrage
@@ -1044,21 +940,12 @@ reqs    =
       "OutputType", "Shield", "Local", FALSE
     }
 
-[effect_upkeep_free_units_tribal]
-type    = "Unit_Upkeep_Free_Per_City"
-value   = 2
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Tribal", "Player", TRUE
-      "OutputType", "Shield", "Local", FALSE
-    }
-
 [effect_upkeep_free_units_despotism]
 type    = "Unit_Upkeep_Free_Per_City"
 value   = 2
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Despotism", "Player", TRUE
+      "Gov", "Tyranny", "Player", TRUE
       "OutputType", "Gold", "Local", FALSE
     }
 
@@ -1076,7 +963,7 @@ type    = "Unit_Upkeep_Free_Per_City"
 value   = 4
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Fundamentalism", "Player", TRUE
+      "Gov", "Theocracy", "Player", TRUE
       "OutputType", "Gold", "Local", FALSE
     }
 
@@ -1089,6 +976,15 @@ reqs    =
       "OutputType", "Shield", "Local", FALSE
     }
 
+[effect_upkeep_free_units_republic_technocracy]
+type    = "Unit_Upkeep_Free_Per_City"
+value   = 1
+reqs    =
+    { "type", "name", "range", "quiet"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Shield", "Local", FALSE
+    }
+
 [effect_upkeep_free_units_democracy]
 type    = "Unit_Upkeep_Free_Per_City"
 value   = 2
@@ -1098,12 +994,30 @@ reqs    =
       "OutputType", "Gold", "Local", FALSE
     }
 
-[effect_upkeep_free_units_federation]
+[effect_upkeep_free_units_democracy_corporate_republic]
 type    = "Unit_Upkeep_Free_Per_City"
-value   = 4
+value   = 2
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Federation", "Player", TRUE
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Gold", "Local", FALSE
+    }
+
+[effect_upkeep_free_units_democracy_ecotopia]
+type    = "Unit_Upkeep_Free_Per_City"
+value   = 2
+reqs    =
+    { "type", "name", "range", "quiet"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Gold", "Local", FALSE
+    }
+
+[effect_upkeep_free_units_democracy_virtual_democracy]
+type    = "Unit_Upkeep_Free_Per_City"
+value   = 2
+reqs    =
+    { "type", "name", "range", "quiet"
+      "Gov", "Virtual Democracy", "Player", TRUE
       "OutputType", "Gold", "Local", FALSE
     }
 
@@ -1113,6 +1027,16 @@ value   = 3
 reqs    =
     { "type", "name", "range", "quiet"
       "Gov", "Communism", "Player", TRUE
+      "OutputType", "Shield", "Local", FALSE
+    }
+
+; Any city can support up to four units...
+[effect_upkeep_free_units_communism_fascism]
+type    = "Unit_Upkeep_Free_Per_City"
+value   = 3
+reqs    =
+    { "type", "name", "range", "quiet"
+      "Gov", "Fascism", "Player", TRUE
       "OutputType", "Shield", "Local", FALSE
     }
 
@@ -1279,20 +1203,12 @@ reqs    =
       "Gov", "Anarchy", "Player"
     }
 
-[effect_civil_war_tribal]
-type    = "Civil_War_Chance"
-value   = 90
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Tribal", "Player"
-    }
-
 [effect_civil_war_despotism]
 type    = "Civil_War_Chance"
 value   = 80
 reqs    =
     { "type", "name", "range"
-      "Gov", "Despotism", "Player"
+      "Gov", "Tyranny", "Player"
     }
 
 [effect_civil_war_monarchy]
@@ -1311,20 +1227,20 @@ reqs    =
       "Gov", "Communism", "Player"
     }
 
+[effect_civil_war_communism_fascism]
+type    = "Civil_War_Chance"
+value   = 50
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Fascism", "Player"
+    }
+
 [effect_civil_war_fundamentalism]
 type    = "Civil_War_Chance"
 value   = 60
 reqs    =
     { "type", "name", "range"
-      "Gov", "Fundamentalism", "Player"
-    }
-
-[effect_civil_war_federation]
-type    = "Civil_War_Chance"
-value   = 20
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Federation", "Player"
+      "Gov", "Theocracy", "Player"
     }
 
 [effect_civil_war_republic]
@@ -1335,6 +1251,14 @@ reqs    =
       "Gov", "Republic", "Player"
     }
 
+[effect_civil_war_republic_technocracy]
+type    = "Civil_War_Chance"
+value   = 40
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Technocracy", "Player"
+    }
+
 [effect_civil_war_democracy]
 type    = "Civil_War_Chance"
 value   = 30
@@ -1343,236 +1267,28 @@ reqs    =
       "Gov", "Democracy", "Player"
     }
 
-[effect_empire_size_base_tribal]
-type    = "Empire_Size_Base"
-value   = 12
+[effect_civil_war_democracy_corporate_republic]
+type    = "Civil_War_Chance"
+value   = 30
 reqs    =
     { "type", "name", "range"
-      "Gov", "Tribal", "Player"
+      "Gov", "Corporate Republic", "Player"
     }
 
-[effect_empire_size_base_despotism]
-type    = "Empire_Size_Base"
-value   = 10
+[effect_civil_war_democracy_ecotopia]
+type    = "Civil_War_Chance"
+value   = 30
 reqs    =
     { "type", "name", "range"
-      "Gov", "Despotism", "Player"
+      "Gov", "Ecotopia", "Player"
     }
 
-[effect_empire_size_base_monarchy]
-type    = "Empire_Size_Base"
-value   = 14
+[effect_civil_war_democracy_virtual_democracy]
+type    = "Civil_War_Chance"
+value   = 30
 reqs    =
     { "type", "name", "range"
-      "Gov", "Monarchy", "Player"
-    }
-
-[effect_empire_size_base_communism]
-type    = "Empire_Size_Base"
-value   = 28
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Communism", "Player"
-    }
-
-[effect_empire_size_base_fundamentalism]
-type    = "Empire_Size_Base"
-value   = 20
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Fundamentalism", "Player"
-    }
-
-[effect_empire_size_base_federation]
-type    = "Empire_Size_Base"
-value   = 24
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Federation", "Player"
-    }
-
-[effect_empire_size_base_republic]
-type    = "Empire_Size_Base"
-value   = 16
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Republic", "Player"
-    }
-
-[effect_empire_size_base_democracy]
-type    = "Empire_Size_Base"
-value   = 32
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Democracy", "Player"
-    }
-
-[effect_empire_size_step_tribal]
-type    = "Empire_Size_Step"
-value   = 12
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Tribal", "Player"
-    }
-
-[effect_empire_size_step_despotism]
-type    = "Empire_Size_Step"
-value   = 10
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Despotism", "Player"
-    }
-
-[effect_empire_size_step_monarchy]
-type    = "Empire_Size_Step"
-value   = 14
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Monarchy", "Player"
-    }
-
-[effect_empire_size_step_communism]
-type    = "Empire_Size_Step"
-value   = 28
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Communism", "Player"
-    }
-
-[effect_empire_size_step_fundamentalism]
-type    = "Empire_Size_Step"
-value   = 20
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Fundamentalism", "Player"
-    }
-
-[effect_empire_size_step_federation]
-type    = "Empire_Size_Step"
-value   = 24
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Federation", "Player"
-    }
-
-[effect_empire_size_step_republic]
-type    = "Empire_Size_Step"
-value   = 16
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Republic", "Player"
-    }
-
-[effect_empire_size_step_democracy]
-type    = "Empire_Size_Step"
-value   = 32
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Democracy", "Player"
-    }
-
-[effect_max_rates_anarchy]
-type    = "Max_Rates"
-value   = 100
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Anarchy", "Player", TRUE
-    }
-
-[effect_max_rates_tribal]
-type    = "Max_Rates"
-value   = 60
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Tribal", "Player"
-    }
-
-[effect_max_rates_despotism]
-type    = "Max_Rates"
-value   = 60
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Despotism", "Player"
-    }
-
-[effect_max_rates_monarchy]
-type    = "Max_Rates"
-value   = 70
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Monarchy", "Player"
-    }
-
-[effect_max_rates_communism]
-type    = "Max_Rates"
-value   = 80
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Communism", "Player"
-    }
-
-[effect_max_rates_fundamentalism]
-type    = "Max_Rates"
-value   = 70
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Fundamentalism", "Player"
-    }
-
-[effect_max_rates_federation]
-type    = "Max_Rates"
-value   = 90
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Federation", "Player"
-    }
-
-[effect_max_rates_republic]
-type    = "Max_Rates"
-value   = 80
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Republic", "Player"
-    }
-
-[effect_max_rates_democracy]
-type    = "Max_Rates"
-value   = 90
-reqs    =
-    { "type", "name", "range"
-      "Gov", "Democracy", "Player"
-    }
-
-[effect_martial_law_each_anarchy]
-type    = "Martial_Law_Each"
-value   = 1
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Anarchy", "Player", TRUE
-    }
-
-[effect_martial_law_each_despotism]
-type    = "Martial_Law_Each"
-value   = 1
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Despotism", "Player", TRUE
-    }
-
-[effect_martial_law_each_monarchy]
-type    = "Martial_Law_Each"
-value   = 1
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Monarchy", "Player", TRUE
-    }
-
-[effect_martial_law_each_communism]
-type    = "Martial_Law_Each"
-value   = 2
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Communism", "Player", TRUE
+      "Gov", "Virtual Democracy", "Player"
     }
 
 [effect_martial_law_max]
@@ -1581,14 +1297,16 @@ value   = 3
 reqs    =
     { "type", "name", "range", "present"
 ;      "Gov", "Anarchy", "Player", FALSE
-      "Gov", "Tribal", "Player", FALSE
 ;      "Gov", "Communism", "Player", FALSE
 ;      "Gov", "Despotism", "Player", FALSE
 ;      "Gov", "Monarchy", "Player", FALSE
-      "Gov", "Fundamentalism", "Player", FALSE
-      "Gov", "Federation", "Player", FALSE
+      "Gov", "Theocracy", "Player", FALSE
       "Gov", "Republic", "Player", FALSE
+      "Gov", "Technocracy", "Player", FALSE
       "Gov", "Democracy", "Player", FALSE
+      "Gov", "Corporate Republic", "Player", FALSE
+      "Gov", "Ecotopia", "Player", FALSE
+      "Gov", "Virtual Democracy", "Player", FALSE
     }
 
 ; Railroad because makes Pyramids obsolete
@@ -1605,25 +1323,12 @@ reqs    =
       "CityStatus", "Celebration", "City",   FALSE,    FALSE
     }
 
-[effect_gov_tile_penalty_tribal]
-type    = "Output_Penalty_Tile"
-value   = 2
-reqs    =
-    { "type",       "name",        "range",  "present", "quiet"
-      "Gov",        "Tribal",      "Player", TRUE,      TRUE
-      "Tech",       "Railroad",    "Player", FALSE,     FALSE
-      "OutputType", "Gold",        "Local",  FALSE,     TRUE
-      "OutputType", "Luxury",      "Local",  FALSE,     TRUE
-      "OutputType", "Science",     "Local",  FALSE,     TRUE
-      "CityStatus", "Celebration", "City",   FALSE,     FALSE
-    }
-
 [effect_gov_tile_penalty_despotism]
 type    = "Output_Penalty_Tile"
 value   = 2
 reqs    =
     { "type",       "name",        "range", "present", "quiet"
-      "Gov",        "Despotism",   "Player", TRUE,     TRUE
+      "Gov",        "Tyranny",   "Player", TRUE,     TRUE
       "Tech",       "Railroad",    "Player", FALSE,    FALSE
       "OutputType", "Gold",        "Local",  FALSE,    TRUE
       "OutputType", "Luxury",      "Local",  FALSE,    TRUE
@@ -1641,12 +1346,52 @@ reqs    =
       "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
     }
 
+[effect_gov_tile_bonus_republic_technocracy]
+type    = "Output_Inc_Tile"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present", "quiet"
+      "Gov", "Technocracy", "Player", TRUE, TRUE
+      "OutputType", "Trade", "Local", TRUE, FALSE
+      "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
+    }
+
 [effect_gov_tile_bonus_democracy]
 type    = "Output_Inc_Tile"
 value   = 1
 reqs    =
     { "type", "name", "range", "present", "quiet"
       "Gov", "Democracy", "Player", TRUE, TRUE
+      "OutputType", "Trade", "Local", TRUE, FALSE
+      "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
+    }
+
+[effect_gov_tile_bonus_democracy_corporate_republic]
+type    = "Output_Inc_Tile"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present", "quiet"
+      "Gov", "Corporate Republic", "Player", TRUE, TRUE
+      "OutputType", "Trade", "Local", TRUE, FALSE
+      "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
+    }
+
+[effect_gov_tile_bonus_democracy_ecotopia]
+type    = "Output_Inc_Tile"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present", "quiet"
+      "Gov", "Ecotopia", "Player", TRUE, TRUE
+      "OutputType", "Trade", "Local", TRUE, FALSE
+      "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
+    }
+
+[effect_gov_tile_bonus_democracy_virtual_democracy]
+type    = "Output_Inc_Tile"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present", "quiet"
+      "Gov", "Virtual Democracy", "Player", TRUE, TRUE
       "OutputType", "Trade", "Local", TRUE, FALSE
       "TerrainClass", "Oceanic", "Tile", FALSE, FALSE
     }
@@ -1658,33 +1403,14 @@ reqs    =
     { "type", "name", "range", "present", "quiet"
       "OutputType", "Trade", "Local", TRUE, TRUE
       "Gov", "Anarchy", "Player", FALSE, FALSE
-      "Gov", "Tribal", "Player", FALSE, FALSE
       "Gov", "Communism", "Player", FALSE, FALSE
-      "Gov", "Despotism", "Player", FALSE, FALSE
+      "Gov", "Fascism", "Player", FALSE, FALSE
+      "Gov", "Tyranny", "Player", FALSE, FALSE
 ;      "Gov", "Monarchy", "Player", FALSE, FALSE
-      "Gov", "Fundamentalism", "Player", FALSE, FALSE
+      "Gov", "Theocracy", "Player", FALSE, FALSE
 ;      "Gov", "Federation", "Player", FALSE, FALSE
 ;      "Gov", "Republic", "Player", FALSE, FALSE
 ;      "Gov", "Democracy", "Player", FALSE, FALSE
-    }
-
-[effect_content_tribal]
-type    = "Make_Content"
-value   = 1
-reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Tribal", "Player", TRUE
-    }
-
-[effect_combat_tribal]
-type    = "Veteran_Combat"
-value   = 50
-reqs    =
-    { "type", "name", "range", "present", "quiet"
-      "Gov", "Tribal", "Player", TRUE, TRUE
-      "UnitClass", "Land", "Local", TRUE, FALSE
-      "UnitFlag", "NonMil", "Local", FALSE, FALSE
-      "UnitFlag", "NoVeteran", "Local", FALSE, FALSE
     }
 
 [effect_revolution_republic]
@@ -1695,6 +1421,14 @@ reqs    =
       "Gov", "Republic", "Player"
     }
 
+[effect_revolution_republic_technocracy]
+type    = "Revolution_Unhappiness"
+value   = 2
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Technocracy", "Player"
+    }
+
 [effect_revolution_democracy]
 type    = "Revolution_Unhappiness"
 value   = 2
@@ -1703,12 +1437,28 @@ reqs    =
       "Gov", "Democracy", "Player"
     }
 
-[effect_senate_federation]
-type    = "Has_Senate"
-value   = 1
+[effect_revolution_democracy_corporate_republic]
+type    = "Revolution_Unhappiness"
+value   = 2
 reqs    =
-    { "type", "name", "range", "present"
-      "Gov", "Federation", "Player", TRUE
+    { "type", "name", "range"
+      "Gov", "Corporate Republic", "Player"
+    }
+
+[effect_revolution_democracy_ecotopia]
+type    = "Revolution_Unhappiness"
+value   = 2
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Ecotopia", "Player"
+    }
+
+[effect_revolution_democracy_virtual_democracy]
+type    = "Revolution_Unhappiness"
+value   = 2
+reqs    =
+    { "type", "name", "range"
+      "Gov", "Virtual Democracy", "Player"
     }
 
 [effect_senate_democracy]
@@ -1717,6 +1467,30 @@ value   = 1
 reqs    =
     { "type", "name", "range", "present"
       "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_senate_democracy_corporate_republic]
+type    = "Has_Senate"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_senate_democracy_ecotopia]
+type    = "Has_Senate"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+    }
+
+[effect_senate_democracy_virtual_democracy]
+type    = "Has_Senate"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
     }
 
 [effect_veteran_communism]
@@ -1728,12 +1502,12 @@ reqs    =
       "UnitFlag", "Diplomat", "Local"
     }
 
-[effect_veteran_federation]
+[effect_veteran_communism_fascism]
 type    = "Veteran_Build"
 value   = 1
 reqs    =
     { "type", "name", "range"
-      "Gov", "Federation", "Player"
+      "Gov", "Fascism", "Player"
       "UnitFlag", "Diplomat", "Local"
     }
 
@@ -1743,6 +1517,18 @@ value   = 1
 reqs    =
     { "type", "name", "range", "present"
       "Gov", "Communism", "Player", TRUE
+      "Tech", "Communism", "Player", TRUE
+      "Tech", "Gunpowder", "Player", TRUE
+      "Tech", "Communism", "World", TRUE
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[effect_partisan_communism_fascism]
+type    = "Inspire_Partisans"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
       "Tech", "Communism", "Player", TRUE
       "Tech", "Gunpowder", "Player", TRUE
       "Tech", "Communism", "World", TRUE
@@ -1761,14 +1547,40 @@ reqs    =
       "NationGroup", "Barbarian", "Player", FALSE
     }
 
-[effect_lux_federation]
-type    = "Output_Add_Tile"
-value   = 2
+[effect_partisan_democracy_corporate_republic]
+type    = "Inspire_Partisans"
+value   = 1
 reqs    =
-    { "type", "name", "range", "quiet"
-      "Gov", "Federation", "Player", TRUE
-      "CityTile", "Center", "Tile", FALSE
-      "OutputType", "Luxury", "Local", FALSE
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "Tech", "Communism", "Player", TRUE
+      "Tech", "Gunpowder", "Player", TRUE
+      "Tech", "Communism", "World", TRUE
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[effect_partisan_democracy_ecotopia]
+type    = "Inspire_Partisans"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "Tech", "Communism", "Player", TRUE
+      "Tech", "Gunpowder", "Player", TRUE
+      "Tech", "Communism", "World", TRUE
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[effect_partisan_democracy_virtual_democracy]
+type    = "Inspire_Partisans"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "Tech", "Communism", "Player", TRUE
+      "Tech", "Gunpowder", "Player", TRUE
+      "Tech", "Communism", "World", TRUE
+      "NationGroup", "Barbarian", "Player", FALSE
     }
 
 [effect_bad_lux_anarchy]
@@ -1785,7 +1597,7 @@ type    = "Output_Bonus"
 value   = -50
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Fundamentalism", "Player", TRUE
+      "Gov", "Theocracy", "Player", TRUE
       "OutputType", "Science", "Local", FALSE
     }
 
@@ -1794,7 +1606,7 @@ type    = "Happiness_To_Gold"
 value   = 1
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Fundamentalism", "Player", TRUE
+      "Gov", "Theocracy", "Player", TRUE
     }
 
 [effect_fanatics_fundamentalism]
@@ -1802,7 +1614,7 @@ type    = "Fanatics"
 value   = 1
 reqs    =
     { "type", "name", "range"
-      "Gov", "Fundamentalism", "Player"
+      "Gov", "Theocracy", "Player"
     }
 
 [effect_airport]
@@ -2000,7 +1812,7 @@ type    = "Output_Bonus"
 value   = 75
 reqs    =
     { "type", "name", "range", "quiet"
-      "Gov", "Despotism", "Player", TRUE
+      "Gov", "Tyranny", "Player", TRUE
       "Building", "Capitol", "City", FALSE
       "OutputType", "Gold", "Local", FALSE
     }
@@ -4431,4 +4243,1033 @@ value   = 1
 reqs    =
     { "type", "name", "range", "present"
       "Building", "The Solaris Project", "World", TRUE
+    }
+
+; Call to Power II governments, generated from the CTP2 government data
+
+[effect_ctp2_gov_001]
+type    = "Max_Rates"
+value   = 100
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Anarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_002]
+type    = "Output_Waste"
+value   = 40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Anarchy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_003]
+type    = "Output_Waste"
+value   = 20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Anarchy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_004]
+type    = "Martial_Law_Each"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Anarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_005]
+type    = "Martial_Law_Max"
+value   = 5
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Anarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_006]
+type    = "Max_Rates"
+value   = 50
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_007]
+type    = "Empire_Size_Base"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_008]
+type    = "Empire_Size_Step"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_009]
+type    = "Output_Waste"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_010]
+type    = "Output_Waste"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_011]
+type    = "Martial_Law_Each"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_012]
+type    = "Martial_Law_Max"
+value   = 4
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_013]
+type    = "Output_Bonus"
+value   = -8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_014]
+type    = "Output_Bonus"
+value   = -8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_015]
+type    = "Output_Bonus"
+value   = -12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_016]
+type    = "Pollu_Prod_Pct"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Tyranny", "Player", TRUE
+    }
+
+[effect_ctp2_gov_017]
+type    = "Max_Rates"
+value   = 60
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_018]
+type    = "Empire_Size_Base"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_019]
+type    = "Empire_Size_Step"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_020]
+type    = "Output_Waste"
+value   = 20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_021]
+type    = "Output_Waste"
+value   = 10
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_022]
+type    = "Martial_Law_Each"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_023]
+type    = "Martial_Law_Max"
+value   = 3
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_024]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_025]
+type    = "Pollu_Prod_Pct"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Monarchy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_026]
+type    = "Max_Rates"
+value   = 70
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_027]
+type    = "Empire_Size_Base"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_028]
+type    = "Empire_Size_Step"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_029]
+type    = "Output_Waste"
+value   = 25
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_030]
+type    = "Output_Waste"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_031]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_032]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_033]
+type    = "Output_Bonus"
+value   = 25
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_034]
+type    = "Pollu_Prod_Pct"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_035]
+type    = "Max_Rates"
+value   = 60
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_036]
+type    = "Empire_Size_Base"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_037]
+type    = "Empire_Size_Step"
+value   = 13
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_038]
+type    = "Output_Waste"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_039]
+type    = "Output_Waste"
+value   = 8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_040]
+type    = "Martial_Law_Each"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_041]
+type    = "Martial_Law_Max"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_042]
+type    = "Unhappy_Factor"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_043]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_044]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_045]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_046]
+type    = "Pollu_Prod_Pct"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Theocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_047]
+type    = "Max_Rates"
+value   = 60
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_048]
+type    = "Empire_Size_Base"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_049]
+type    = "Empire_Size_Step"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_050]
+type    = "Output_Waste"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_051]
+type    = "Output_Waste"
+value   = 8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_052]
+type    = "Martial_Law_Each"
+value   = 2
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_053]
+type    = "Martial_Law_Max"
+value   = 2
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_054]
+type    = "Unhappy_Factor"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_055]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_056]
+type    = "Output_Bonus"
+value   = 25
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_057]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_058]
+type    = "Pollu_Prod_Pct"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Communism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_059]
+type    = "Max_Rates"
+value   = 60
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_060]
+type    = "Empire_Size_Base"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_061]
+type    = "Empire_Size_Step"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_062]
+type    = "Output_Waste"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_063]
+type    = "Output_Waste"
+value   = 8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_064]
+type    = "Martial_Law_Each"
+value   = 2
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_065]
+type    = "Martial_Law_Max"
+value   = 2
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_066]
+type    = "Output_Bonus"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_067]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_068]
+type    = "Pollu_Prod_Pct"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Fascism", "Player", TRUE
+    }
+
+[effect_ctp2_gov_069]
+type    = "Max_Rates"
+value   = 80
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_070]
+type    = "Empire_Size_Base"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_071]
+type    = "Empire_Size_Step"
+value   = 23
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_072]
+type    = "Output_Waste"
+value   = 20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_073]
+type    = "Output_Waste"
+value   = 10
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_074]
+type    = "Unhappy_Factor"
+value   = 2
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_075]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_076]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_077]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_078]
+type    = "Output_Bonus"
+value   = 50
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_079]
+type    = "Pollu_Prod_Pct"
+value   = -20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_080]
+type    = "Max_Rates"
+value   = 80
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_081]
+type    = "Empire_Size_Base"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_082]
+type    = "Empire_Size_Step"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_083]
+type    = "Output_Waste"
+value   = 20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_084]
+type    = "Output_Waste"
+value   = 10
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_085]
+type    = "Unhappy_Factor"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_086]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_087]
+type    = "Output_Bonus"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_088]
+type    = "Output_Bonus"
+value   = 38
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_089]
+type    = "Output_Bonus"
+value   = 50
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_090]
+type    = "Pollu_Prod_Pct"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Corporate Republic", "Player", TRUE
+    }
+
+[effect_ctp2_gov_091]
+type    = "Max_Rates"
+value   = 100
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_092]
+type    = "Empire_Size_Base"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_093]
+type    = "Empire_Size_Step"
+value   = 30
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_094]
+type    = "Output_Waste"
+value   = 10
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_095]
+type    = "Output_Waste"
+value   = 5
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_096]
+type    = "Unhappy_Factor"
+value   = 1
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_097]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_098]
+type    = "Output_Bonus"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_099]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_100]
+type    = "Output_Bonus"
+value   = 75
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Technocracy", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_101]
+type    = "Max_Rates"
+value   = 80
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+    }
+
+[effect_ctp2_gov_102]
+type    = "Empire_Size_Base"
+value   = 40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+    }
+
+[effect_ctp2_gov_103]
+type    = "Empire_Size_Step"
+value   = 40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+    }
+
+[effect_ctp2_gov_104]
+type    = "Output_Waste"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_105]
+type    = "Output_Waste"
+value   = 8
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_106]
+type    = "Output_Bonus"
+value   = 25
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_107]
+type    = "Output_Bonus"
+value   = 7
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_108]
+type    = "Output_Bonus"
+value   = 25
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_109]
+type    = "Output_Bonus"
+value   = 50
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_110]
+type    = "Pollu_Prod_Pct"
+value   = -40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Ecotopia", "Player", TRUE
+    }
+
+[effect_ctp2_gov_111]
+type    = "Max_Rates"
+value   = 100
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_112]
+type    = "Empire_Size_Base"
+value   = 40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_113]
+type    = "Empire_Size_Step"
+value   = 40
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_114]
+type    = "Output_Waste"
+value   = 10
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Trade", "Local", TRUE
+    }
+
+[effect_ctp2_gov_115]
+type    = "Output_Waste"
+value   = 5
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_116]
+type    = "Unhappy_Factor"
+value   = 3
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+    }
+
+[effect_ctp2_gov_117]
+type    = "Output_Bonus"
+value   = 12
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Food", "Local", TRUE
+    }
+
+[effect_ctp2_gov_118]
+type    = "Output_Bonus"
+value   = 15
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Shield", "Local", TRUE
+    }
+
+[effect_ctp2_gov_119]
+type    = "Output_Bonus"
+value   = 38
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Gold", "Local", TRUE
+    }
+
+[effect_ctp2_gov_120]
+type    = "Output_Bonus"
+value   = 75
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
+      "OutputType", "Science", "Local", TRUE
+    }
+
+[effect_ctp2_gov_121]
+type    = "Pollu_Prod_Pct"
+value   = -20
+reqs    =
+    { "type", "name", "range", "present"
+      "Gov", "Virtual Democracy", "Player", TRUE
     }

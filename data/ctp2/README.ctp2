@@ -90,10 +90,6 @@ prerequisites. Research costs still follow Freeciv's "Linear" formula
 (cost grows with the number of prerequisites) instead of CTP2's own
 numbers, which keeps the research pace close to other Freeciv rulesets.
 
-Governments are still the sandbox ones; their requirements were moved
-to the CTP2 advance of the same era or role.
-
-
 Units
 -----
 
@@ -117,9 +113,9 @@ Barbarian Leader and Storm.
 
 Not converted yet: CTP2 special units without Freeciv equivalent
 (Slaver, Abolitionist, Cleric, Televangelist, Lawyer, Corporate
-Branch, Infector, Eco-Ranger, Eco-Terrorist), government specific
-units (Fascist), undersea and space units (Sea Engineer, Crawler,
-Space Plane) and the Cargo Helicopter.
+Branch, Infector, Eco-Ranger, Eco-Terrorist), undersea and space
+units (Sea Engineer, Crawler, Space Plane) and the Cargo Helicopter.
+The Fascist is available (see Governments).
 
 
 Buildings and wonders
@@ -156,6 +152,34 @@ and rebuilding it after losing the capital needs Feudalism, as in
 CTP2. Coinage and the spaceship parts also remain.
 
 
+Governments
+-----------
+
+The 12 governments of CTP2 replace the Freeciv ones: Anarchy, Tyranny
+(starting government), Monarchy, Republic, Theocracy, Communism,
+Fascism, Democracy, Corporate Republic, Technocracy, Ecotopia and
+Virtual Democracy, each enabled by its CTP2 advance.
+
+Basic rules such as unit upkeep, celebration and senate come from the
+closest sandbox government (Tyranny from Despotism, Theocracy from
+Fundamentalism; Fascism from Communism; Technocracy from Republic;
+Corporate Republic, Ecotopia and Virtual Democracy from Democracy).
+On top of that, these values come from the CTP2 government data:
+
+  maximum science rate          maximum tax/science/luxury rate
+  "too many cities" threshold   cities before empire size unhappiness
+                                (threshold / 1.5)
+  crime                         waste: 20 x coefficient % trade,
+                                10 x coefficient % shields
+  martial law                   content per unit and maximum units
+  war discontent per unit       unhappiness from aggressive units
+  food, production, gold and    +/- half of the CTP2 bonus
+    science coefficients
+  pollution coefficient         more or less pollution from shields
+
+The Fascist unit can only be built under Fascism.
+
+
 Known limitations
 -----------------
 
@@ -170,9 +194,9 @@ Roadmap
 -------
 
 1. Policies and Public Works (done).
-2. CTP2 technology tree, units, buildings and wonders (this version).
-   Next: CTP2 governments, crime as waste, city radius growing with
-   size, Gaia Controller victory.
+2. CTP2 technology tree, units, buildings, wonders and governments
+   (this version). Next: city radius growing with size, Gaia
+   Controller victory, government specific special units.
 3. Lua: Feats of Wonder, readiness delay, ruins.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.
