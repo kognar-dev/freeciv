@@ -74,6 +74,9 @@
 
 #define AI_BA_RECALC_SPEED 5
 
+/* Unspent infrapoints above which more of them are worth nothing. */
+#define DAI_INFRA_RESERVE 100
+
 #define SPECVEC_TAG tech
 #define SPECVEC_TYPE struct advance *
 #include "specvec.h"
@@ -1479,6 +1482,13 @@ adv_want dai_city_want(struct player *pplayer, struct city *acity,
   }
   want += prod[O_LUXURY] * adv->luxury_priority;
   want += prod[O_SCIENCE] * adv->science_priority;
+  if (pimprove == NULL && terrain_control.infrapoints
+      && pplayer->economic.infra_points < DAI_INFRA_RESERVE) {
+    /* Infrapoints are spent by adv_place_infrastructure(). Once a large
+     * reserve has piled up there is nothing left to spend them on.
+     * Improvement effects on infrapoints are valued in dai_effect_value(). */
+    want += get_city_bonus(acity, EFT_INFRA_POINTS) * adv->infra_priority;
+  }
   if (pplayer->economic.tax > 50) {
     /* Increased tax rate indicates that we've had gold shortage which
      * we are trying to fill with taxes. Consider gold more critical
