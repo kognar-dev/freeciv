@@ -1133,33 +1133,42 @@ sound_alt2      = "-"
 
 [building_gaia_controller_core]
 name		= _("Gaia Controller Core")
-genus		= "Improvement"
+genus		= "SmallWonder"
 reqs	=
-    { "type", "name", "range"
-      "Tech", "Gaia Controller", "Player"
+    { "type", "name", "range", "present", "survives"
+      "Tech", "Gaia Controller", "Player", TRUE, FALSE
+      "Building", "The Solaris Project", "World", TRUE, TRUE
     }
 graphic         = "b.gaia_controller_core"
-graphic_alt     = "-"
+graphic_alt     = "b.space_structural"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range"
     }
 build_cost	= 750
-upkeep		= 8
-sabotage	= 100
+upkeep		= 0
+sabotage	= 0
 sound		= "b_gaia_controller_core"
 sound_alt	= "b_generic"
 sound_alt2      = "-"
+helptext	= _("\
+The heart of the Gaia Controller, which can be built once the Solaris\
+ Project exists somewhere in the world. A civilization that has the\
+ Core, Gaia Power Satellites in at least 10 cities and at least 5\
+ Processing Towers covering 60% of the map starts the Gaia Controller\
+ and wins the game after keeping it running for 10 turns.\
+")
 
 [building_gaia_power_satellite]
 name		= _("Gaia Power Satellite")
 genus		= "Improvement"
 reqs	=
-    { "type", "name", "range"
-      "Tech", "Gaia Controller", "Player"
+    { "type", "name", "range", "present", "survives"
+      "Tech", "Gaia Controller", "Player", TRUE, FALSE
+      "Building", "The Solaris Project", "World", TRUE, TRUE
     }
 graphic         = "b.gaia_power_satellite"
-graphic_alt     = "-"
+graphic_alt     = "b.space_component"
 graphic_alt2    = "-"
 obsolete_by	=
     { "type", "name", "range"
@@ -1170,6 +1179,12 @@ sabotage	= 100
 sound		= "b_gaia_power_satellite"
 sound_alt	= "b_generic"
 sound_alt2      = "-"
+helptext	= _("\
+Powers the Gaia Controller and gives its city +10% shields. At least\
+ 10 cities need a satellite; with\
+ more of them (up to 40) each Processing Tower covers a wider area,\
+ from 5 up to 16 tiles around it.\
+")
 
 [building_pyramids]
 name		= _("Pyramids")

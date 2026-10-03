@@ -145,7 +145,7 @@ effects to every city of the owner. Effects without a direct Freeciv
 equivalent are approximated: trade route gold becomes +50% trade route
 income, regard becomes AI love, GlobeSat reveals the map, The Agency
 reveals all cities, and the Solaris Project enables the spaceship
-(the Freeciv space race stands in for the Gaia Controller for now).
+and the Gaia Controller (see below).
 
 The Capitol is the old Palace: every civilization starts with one,
 and rebuilding it after losing the capital needs Feudalism, as in
@@ -180,6 +180,36 @@ On top of that, these values come from the CTP2 government data:
 The Fascist unit can only be built under Fascism.
 
 
+City radius
+-----------
+
+As in CTP2, a new city only works the 8 tiles around it and its area
+grows with its size. CTP2 grows the radius at 6, 18, 32 and 46
+citizens; with this ruleset's smaller maximum city size the steps come
+at sizes 3, 10, 17 and 25 (radius_sq 2, 5, 13, 17 and 20).
+
+
+Gaia Controller victory
+-----------------------
+
+Researching Gaia Controller allows building the Solaris Project
+wonder. Once it exists anywhere in the world, every civilization with
+the advance can build:
+
+  Gaia Controller Core   one per civilization (small wonder)
+  Gaia Power Satellite   city improvement, +10% shields in its city
+  Processing Tower       tile improvement (Workers or Public Works)
+
+A civilization that has the Core, satellites in at least 10 cities and
+at least 5 Processing Towers inside its borders covering 60% of the map
+starts the Gaia Controller; every player is told. Each tower covers the
+tiles within 5 tiles, growing to 16 tiles as satellites go from 10 to
+40. If the conditions hold for 10 consecutive turns the civilization
+wins the game; if they break, the countdown starts again. This is
+implemented in script.lua. The Freeciv spaceship is still available as
+an alternative science victory.
+
+
 Known limitations
 -----------------
 
@@ -194,9 +224,9 @@ Roadmap
 -------
 
 1. Policies and Public Works (done).
-2. CTP2 technology tree, units, buildings, wonders and governments
-   (this version). Next: city radius growing with size, Gaia
-   Controller victory, government specific special units.
+2. CTP2 technology tree, units, buildings, wonders, governments, city
+   radius and Gaia Controller victory (this version). Next:
+   government specific special units.
 3. Lua: Feats of Wonder, readiness delay, ruins.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.

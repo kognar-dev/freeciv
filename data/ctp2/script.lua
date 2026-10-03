@@ -527,3 +527,102 @@ end
 
 signal.connect("action_started_unit_tile",
 "action_started_unit_tile_callback")
+
+-- Call to Power II Gaia Controller victory.
+-- A player with the Gaia Controller Core, Gaia Power Satellites in at
+-- least 10 cities and at least 5 Processing Towers inside their borders
+-- covering 60% of the map runs the Gaia Controller. Keeping it running
+-- for 10 consecutive turns wins the game. Tower coverage radius grows
+-- from 5 tiles (10 satellites) to 16 tiles (40 satellites).
+-- Turn counters are global numbers so that they are saved with the game.
+
+local GAIA_TURNS = 10
+local GAIA_MIN_SATELLITES = 10
+local GAIA_MAX_SATELLITES = 40
+local GAIA_MIN_TOWERS = 5
+local GAIA_COVERAGE = 0.6
+
+function ctp2_gaia_check(player, map_tiles)
+  local core = find.building_type("Gaia Controller Core")
+  local satellite = find.building_type("Gaia Power Satellite")
+  local has_core = false
+  local satellites = 0
+
+  for city in player:cities_iterate() do
+    if city:has_building(core) then
+      has_core = true
+    end
+    if city:has_building(satellite) then
+      satellites = satellites + 1
+    end
+  end
+
+  if not has_core or satellites < GAIA_MIN_SATELLITES then
+    return false
+  end
+
+  local towers = {}
+  for tile in whole_map_iterate() do
+    if tile.owner == player and tile:has_extra("Processing Tower") then
+      towers[#towers + 1] = tile
+    end
+  end
+  if #towers < GAIA_MIN_TOWERS then
+    return false
+  end
+
+  local power = math.min(satellites, GAIA_MAX_SATELLITES) - GAIA_MIN_SATELLITES
+  local radius = 5 + 11 * power / (GAIA_MAX_SATELLITES - GAIA_MIN_SATELLITES)
+  local sq_radius = math.floor(radius * radius)
+  local covered = {}
+  local count = 0
+
+  for _, tower in ipairs(towers) do
+    for tile in tower:circle_iterate(sq_radius) do
+      if not covered[tile.id] then
+        covered[tile.id] = true
+        count = count + 1
+      end
+    end
+  end
+
+  return count >= GAIA_COVERAGE * map_tiles
+end
+
+function ctp2_gaia_turn(turn, year)
+  local map_tiles = nil
+
+  for player in players_iterate() do
+    if player.is_alive then
+      local var = "ctp2_gaia_turns_" .. player.id
+      local running = _G[var] or 0
+
+      if map_tiles == nil then
+        map_tiles = 0
+        for tile in whole_map_iterate() do
+          map_tiles = map_tiles + 1
+        end
+      end
+
+      if ctp2_gaia_check(player, map_tiles) then
+        running = running + 1
+        if running == 1 then
+          notify.all(_("The %s have started the Gaia Controller! They will win in %d turns unless it is stopped."),
+                     player.nation:plural_translation(), GAIA_TURNS)
+        end
+        if running >= GAIA_TURNS then
+          notify.all(_("The Gaia Controller of the %s is complete."),
+                     player.nation:plural_translation())
+          player:victory()
+        end
+      elseif running > 0 then
+        notify.all(_("The Gaia Controller of the %s has stopped."),
+                   player.nation:plural_translation())
+        running = 0
+      end
+      _G[var] = running
+    end
+  end
+end
+
+signal.connect("turn_begin", "ctp2_gaia_turn")
