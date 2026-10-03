@@ -255,6 +255,10 @@ found_city_consuming_always = TRUE
 ; /* TRANS: _Poison City (3% chance of success). */
 ui_name_poison_city_escape = _("%sPoison City%s")
 
+; Only the CTP2 Slaver does "Poison City" (without escape).
+; /* TRANS: _Slave Raid (75% chance of success). */
+ui_name_poison_city = _("%sSlave Raid%s")
+
 ; /* TRANS: _Sabotage Enemy Unit (3% chance of success). */
 ui_name_sabotage_unit_escape = _("%sSabotage Enemy Unit%s")
 
@@ -483,12 +487,29 @@ user_action_2_min_range              = 1
 user_action_2_max_range              = "unlimited"
 user_action_2_actor_consuming_always = FALSE
 
+; CTP2 Cleric and Televangelist. The effect is in script.lua.
+; /* TRANS: _Convert City (100% chance of success). */
+ui_name_user_action_3                = _("%sConvert City%s")
+user_action_3_target_kind            = "City"
+user_action_3_min_range              = 0
+user_action_3_max_range              = 1
+user_action_3_actor_consuming_always = FALSE
+
+; CTP2 Corporate Branch. The effect is in script.lua.
+; /* TRANS: _Create Franchise (100% chance of success). */
+ui_name_user_action_4                = _("%sCreate Franchise%s")
+user_action_4_target_kind            = "City"
+user_action_4_min_range              = 0
+user_action_4_max_range              = 1
+user_action_4_actor_consuming_always = FALSE
+
 ; Some actions have a action dice roll before the action starts where it can
 ; fail. The initial probability of success is 100% unless the action appears
 ; in the following list. Then the initial probability comes from the setting
 ; diplchance. The initial probability of success is modified by the
 ; Action_Odds_Pct effect before the roll happens.
-diplchance_initial_odds = "Sabotage City", "Sabotage City Escape",
+diplchance_initial_odds = "Poison City",
+                          "Sabotage City", "Sabotage City Escape",
                           "Targeted Sabotage City Escape",
                           "Sabotage City Production Escape",
                           "Steal Tech", "Steal Tech Escape Expected",
@@ -2747,4 +2768,162 @@ actor_reqs    =
       "UnitState",      "OnNativeTile", "Local", FALSE
       "CityTile",       "Center",       "Tile",  FALSE
       "UnitClassFlag",  "HutFrighten",  "Local", TRUE
+    }
+
+; Call to Power II special units
+
+[actionenabler_ctp2_convert_city_cleric]
+action        = "User Action 3"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Cleric", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[actionenabler_ctp2_convert_city_televangelist]
+action        = "User Action 3"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Televangelist", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[actionenabler_ctp2_create_franchise]
+action        = "User Action 4"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Corporate Branch", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "NationGroup", "Barbarian", "Player", FALSE
+    }
+
+[actionenabler_ctp2_slave_raid]
+action        = "Poison City"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Slaver", "Local", TRUE
+      "DiplRel", "War", "Local", TRUE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "MinSize", "2", "City", TRUE
+    }
+
+[actionenabler_ctp2_abolitionist_expel]
+action        = "Expel Unit"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Abolitionist", "Local", TRUE
+      "DiplRelTile", "Foreign", "Local", FALSE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Slaver", "Local", TRUE
+      "DiplRelTile", "Foreign", "Local", TRUE
+    }
+
+[actionenabler_ctp2_lawyer_sue]
+action        = "Expel Unit"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Lawyer", "Local", TRUE
+      "DiplRelTile", "Foreign", "Local", FALSE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "UnitFlag", "Suable", "Local", TRUE
+      "DiplRelTile", "Foreign", "Local", TRUE
+    }
+
+[actionenabler_ctp2_lawyer_injunction]
+action        = "Sabotage City Production Escape"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Lawyer", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+
+[actionenabler_ctp2_eco_ranger_park]
+action        = "Destroy City"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Eco-Ranger", "Local", TRUE
+      "DiplRel", "War", "Local", TRUE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+
+[actionenabler_ctp2_eco_terrorist_nano]
+action        = "Suitcase Nuke Escape"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Eco-Terrorist", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+
+[actionenabler_ctp2_infector_plague]
+action        = "Spread Plague"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Infector", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "MinSize", "5", "City", TRUE
+    }
+
+[actionenabler_ctp2_infector_bio_terror]
+action        = "Poison City Escape"
+actor_reqs    =
+    { "type",         "name",          "range", "present"
+      "UnitType", "Infector", "Local", TRUE
+      "DiplRel", "Foreign", "Local", TRUE
+      "DiplRel", "Alliance", "Local", FALSE
+      "DiplRel", "Team", "Local", FALSE
+      "UnitState", "OnLivableTile", "Local", TRUE
+      "MinMoveFrags", "1", "Local", TRUE
+    }
+target_reqs   =
+    { "type",         "name",          "range", "present"
+      "MinSize", "2", "City", TRUE
     }

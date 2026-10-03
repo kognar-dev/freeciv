@@ -111,11 +111,56 @@ Some Freeciv units remain because the engine or the AI needs them:
 Workers, Engineers, Mechanic, Explorer, Partisan, Fanatics, Leader,
 Barbarian Leader and Storm.
 
-Not converted yet: CTP2 special units without Freeciv equivalent
-(Slaver, Abolitionist, Cleric, Televangelist, Lawyer, Corporate
-Branch, Infector, Eco-Ranger, Eco-Terrorist), undersea and space
-units (Sea Engineer, Crawler, Space Plane) and the Cargo Helicopter.
-The Fascist is available (see Governments).
+Not converted yet: undersea and space units (Sea Engineer, Crawler,
+Space Plane) and the Cargo Helicopter. The Fascist is available (see
+Governments) and the special units are described below.
+
+
+Special units
+-------------
+
+The CTP2 special units use Freeciv actions; script.lua adds what the
+engine lacks. Cost, movement and vision follow the unit conversion
+above; like the Diplomat they have no attack or defense.
+
+  Cleric          Theology, Theocracy only. "Convert City" on a
+                  foreign city.
+  Televangelist   Mass Media, Theocracy only. Converts like the
+                  Cleric, with a bigger tithe. Replaces the Cleric.
+  Corporate       Corporation. "Create Franchise" on a foreign city.
+    Branch
+  Lawyer          Criminal Code. Injunction ("Sabotage City
+                  Production") against foreign cities, and sues
+                  ("Expel Unit") foreign Televangelists, Corporate
+                  Branches and Lawyers out of your territory.
+  Slaver          Slave Labor. "Slave Raid" on an enemy city of size
+                  2 or more: one citizen less there, and new Workers
+                  for you. Captures enemy Settlers, Urban Planners,
+                  Workers and Engineers in the field.
+  Abolitionist    Classical Education. Catches Slavers that raid the
+                  city it is in, and expels foreign Slavers from
+                  your territory.
+  Eco-Ranger      Ecotopia, Ecotopia only. Turns an enemy city into
+                  a park ("Destroy City"); the Eco-Ranger is used up.
+  Eco-Terrorist   Ecotopia, Ecotopia only. Nano terror (suitcase
+                  nuke) against a foreign city.
+  Infector        Nano-Warfare. Spreads plague into a foreign city of
+                  size 5 or more, or poisons it (one citizen less).
+
+Converting and franchising succeed 75% of the time, as in CTP2; after
+a failure the unit dies half of the time. Each one takes the rest of
+the unit's turn. While a city is converted, its owner pays the
+converter a tithe every turn: city size x 2/5 gold for a Cleric and
+x 4/5 for a Televangelist (CTP2 sends 20% and 40% of the city's trade).
+A franchise pays its owner city size / 5 gold (at least 1) every turn
+from the city owner's treasury (CTP2 takes 10% of the production).
+The city owner ends a conversion by keeping one of their own Clerics
+or Televangelists in the city at the start of a turn, and a franchise
+the same way with a Lawyer.
+
+Slave raids and injunctions follow the "diplchance" server setting
+and can fail; the Slaver comes back after a successful raid. The AI
+does not build special units yet.
 
 
 Buildings and wonders
@@ -215,6 +260,7 @@ Known limitations
 
 - The AI never spends infrapoints, so Workers are still available and
   the AI keeps using them. Human players may use both.
+- The AI does not build or use the special units.
 - CTP2 armies (stacks of up to 12 units fighting together, with
   flanking and ranged rows) need engine changes and are not part of
   this ruleset.
@@ -224,9 +270,9 @@ Roadmap
 -------
 
 1. Policies and Public Works (done).
-2. CTP2 technology tree, units, buildings, wonders, governments, city
-   radius and Gaia Controller victory (this version). Next:
-   government specific special units.
+2. CTP2 technology tree, units, special units, buildings, wonders,
+   governments, city radius and Gaia Controller victory (this
+   version).
 3. Lua: Feats of Wonder, readiness delay, ruins.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.
