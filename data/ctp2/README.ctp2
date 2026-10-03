@@ -16,6 +16,19 @@ Work in progress: balance is untested and the AI does not understand
 all of the mechanics yet (see "Known limitations").
 
 
+Installing and updating
+-----------------------
+
+scripts/ctp2-update.sh (Linux, macOS) and scripts/ctp2-update.ps1
+(Windows) download or update the mod from git and copy this ruleset
+into the user data directory (~/.freeciv/3.2 or %APPDATA%\.freeciv\3.2),
+where any installed Freeciv 3.2.x finds it. Run them again whenever
+the mod changes. With --build, ctp2-update.sh also compiles the whole
+fork (GTK 4 client by default) into ~/fc-ctp2.
+
+In a new game, type "/rulesetdir ctp2" before starting.
+
+
 Domestic policies (CTP2 Empire Manager)
 ---------------------------------------
 
