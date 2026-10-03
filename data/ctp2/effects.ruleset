@@ -5273,3 +5273,49 @@ reqs    =
     { "type", "name", "range", "present"
       "Gov", "Virtual Democracy", "Player", TRUE
     }
+
+; Call to Power II city radius: the worked area grows with city size.
+; CTP2 radius_sq 2 / 5 / 13 / 17 / 20 at 0 / 6 / 18 / 32 / 46 citizens,
+; with sizes scaled to this ruleset's maximum city size of 32.
+[effect_ctp2_city_radius_3]
+type    = "City_Radius_Sq"
+value   = 3
+reqs    =
+    { "type", "name", "range"
+      "MinSize", "3", "City"
+    }
+
+[effect_ctp2_city_radius_10]
+type    = "City_Radius_Sq"
+value   = 8
+reqs    =
+    { "type", "name", "range"
+      "MinSize", "10", "City"
+    }
+
+[effect_ctp2_city_radius_17]
+type    = "City_Radius_Sq"
+value   = 4
+reqs    =
+    { "type", "name", "range"
+      "MinSize", "17", "City"
+    }
+
+[effect_ctp2_city_radius_25]
+type    = "City_Radius_Sq"
+value   = 3
+reqs    =
+    { "type", "name", "range"
+      "MinSize", "25", "City"
+    }
+
+; Gaia Power Satellites beam energy to their city. Besides counting for
+; the Gaia Controller victory this keeps the AI from selling them.
+[effect_ctp2_gaia_power_satellite]
+type    = "Output_Bonus"
+value   = 10
+reqs    =
+    { "type", "name", "range"
+      "Building", "Gaia Power Satellite", "City"
+      "OutputType", "Shield", "Local"
+    }
