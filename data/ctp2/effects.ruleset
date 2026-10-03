@@ -527,7 +527,7 @@ value   = 8
 reqs    =
     { "type", "name", "range"
       "Tech", "Jet Propulsion", "Player"
-      "UnitType", "Nuclear", "Local"
+      "UnitType", "Nuke", "Local"
     }
 
 ; Rocketry doubles movement of nuclear weapons
@@ -537,7 +537,7 @@ value   = 8
 reqs    =
     { "type", "name", "range"
       "Tech", "Guided Weapon Systems", "Player"
-      "UnitType", "Nuclear", "Local"
+      "UnitType", "Nuke", "Local"
     }
 
 [effect_combat_rounds_base]

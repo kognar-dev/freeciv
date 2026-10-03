@@ -82,6 +82,46 @@ the GTK 4 client (and GTK 3.22). The Qt client does not offer it in
 Freeciv 3.2.
 
 
+Technology tree
+---------------
+
+The 106 advances of CTP2 replace the Freeciv tech tree, with the CTP2
+prerequisites. Research costs still follow Freeciv's "Linear" formula
+(cost grows with the number of prerequisites) instead of CTP2's own
+numbers, which keeps the research pace close to other Freeciv rulesets.
+
+Buildings, wonders and governments are still the sandbox ones; their
+requirements were moved to the CTP2 advance of the same era or role.
+
+
+Units
+-----
+
+The combat, naval and air units of CTP2 replace the Freeciv units.
+Each one takes from CTP2 its name, enabling advance, upgrade path,
+cost, attack, defense, movement and vision, converted like this:
+
+  attack, defense   CTP2 value / 5 (ranged units use their ranged
+                    attack as attack)
+  hit points        10 x CTP2 armor
+  firepower         as in CTP2
+  build cost        CTP2 shield cost / 15
+  vision radius     CTP2 range r gives vision_radius_sq r*r + 1
+
+Freeciv specific behavior (unit class, abilities, cargo, roles used
+by the AI) comes from the closest sandbox unit.
+
+Some Freeciv units remain because the engine or the AI needs them:
+Workers, Engineers, Mechanic, Explorer, Partisan, Fanatics, Leader,
+Barbarian Leader and Storm.
+
+Not converted yet: CTP2 special units without Freeciv equivalent
+(Slaver, Abolitionist, Cleric, Televangelist, Lawyer, Corporate
+Branch, Infector, Eco-Ranger, Eco-Terrorist), government specific
+units (Fascist), undersea and space units (Sea Engineer, Crawler,
+Space Plane) and the Cargo Helicopter.
+
+
 Known limitations
 -----------------
 
@@ -95,9 +135,10 @@ Known limitations
 Roadmap
 -------
 
-1. Policies and Public Works (this version).
-2. CTP2 technology tree, units, buildings and wonders; crime as
-   waste; city radius growing with size; CTP2 governments.
+1. Policies and Public Works (done).
+2. CTP2 technology tree and units (this version). Next: buildings
+   and wonders, crime as waste, city radius growing with size, CTP2
+   governments.
 3. Lua: Feats of Wonder, readiness delay, ruins.
 4. Engine work in this fork: armies and CTP2 combat, AI use of Public
    Works.
