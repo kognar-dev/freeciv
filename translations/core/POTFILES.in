@@ -288,6 +288,16 @@ data/sandbox/styles.ruleset
 data/sandbox/techs.ruleset
 data/sandbox/terrain.ruleset
 data/sandbox/units.ruleset
+data/ctp2/actions.ruleset
+data/ctp2/buildings.ruleset
+data/ctp2/cities.ruleset
+data/ctp2/game.ruleset
+data/ctp2/governments.ruleset
+data/ctp2/script.lua
+data/ctp2/styles.ruleset
+data/ctp2/techs.ruleset
+data/ctp2/terrain.ruleset
+data/ctp2/units.ruleset
 data/civ2civ3/actions.ruleset
 data/civ2civ3/buildings.ruleset
 data/civ2civ3/cities.ruleset

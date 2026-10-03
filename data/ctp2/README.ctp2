@@ -1,0 +1,144 @@
+=========================
+Call to Power II Ruleset
+=========================
+
+Goal
+----
+
+This ruleset aims for gameplay close to Activision's Call to Power II
+(CTP2) while staying a plain Freeciv ruleset (mod) wherever the engine
+allows it. It targets the stable Freeciv 3.2 series.
+
+It started as a copy of the sandbox ruleset of Freeciv 3.2.6, so
+everything not listed below still behaves like sandbox.
+
+Work in progress: balance is untested and the AI does not understand
+all of the mechanics yet (see "Known limitations").
+
+
+Installing and updating
+-----------------------
+
+scripts/ctp2-update.sh (Linux, macOS) and scripts/ctp2-update.ps1
+(Windows) download or update the mod from git and copy this ruleset
+into the user data directory (~/.freeciv/3.2 or %APPDATA%\.freeciv\3.2),
+where any installed Freeciv 3.2.x finds it. Run them again whenever
+the mod changes. With --build, ctp2-update.sh also compiles the whole
+fork (GTK 4 client by default) into ~/fc-ctp2.
+
+In a new game, type "/rulesetdir ctp2" before starting.
+
+
+Domestic policies (CTP2 Empire Manager)
+---------------------------------------
+
+CTP2 lets you set Rations, Workday and Wages for the whole empire.
+They are implemented as multipliers (policies), adjustable from the
+client's policies dialog. Every slider goes from -2 to +2, with 0 as
+normal. One step moves the base number of content citizens of every
+city by one; when it drops below zero, citizens start out angry.
+
+  Rations  +1: one more content citizen, -10% food.
+  Workday  +1: one less content citizen, +10% shields.
+  Wages    +1: one more content citizen, -10% gold.
+
+Lowering a slider has the opposite effect.
+
+
+Military readiness
+------------------
+
+The Demobilization policy plays the role of CTP2's military readiness:
+
+  0 = At War    (default) full strength, normal upkeep.
+  1 = On Alert  every city supports one more unit free of upkeep,
+                units fight 25% worse.
+  2 = At Peace  two more free units per city, units fight 50% worse.
+
+After changing it you must keep the new value for 5 turns, so you
+cannot switch to At War just after an enemy attacks.
+
+
+Public Works
+------------
+
+As in CTP2, tile improvements can be paid for from a national Public
+Works pool instead of being built by units. The Public Works Tax
+policy (0-50%, default 10%) removes that percentage of shields from
+every city. In return each city adds infrapoints every turn: tax/10
+points, and the same amount again at sizes 5, 9, 13 and 17.
+
+Infrapoints are spent to place these improvements on tiles inside
+your borders:
+
+  Road 10, Railroad 30, Maglev 60, Irrigation 15, Farmland 30,
+  Mine 20, Oil Well 40, Fort 15, Fortress 30, Airstrip 25, Airbase 40
+
+The usual technology and terrain requirements still apply. Placing
+takes several turns, depending on the terrain.
+
+Placing improvements needs a client with the infrastructure dialog:
+the GTK 4 client (and GTK 3.22). The Qt client does not offer it in
+Freeciv 3.2.
+
+
+Technology tree
+---------------
+
+The 106 advances of CTP2 replace the Freeciv tech tree, with the CTP2
+prerequisites. Research costs still follow Freeciv's "Linear" formula
+(cost grows with the number of prerequisites) instead of CTP2's own
+numbers, which keeps the research pace close to other Freeciv rulesets.
+
+Buildings, wonders and governments are still the sandbox ones; their
+requirements were moved to the CTP2 advance of the same era or role.
+
+
+Units
+-----
+
+The combat, naval and air units of CTP2 replace the Freeciv units.
+Each one takes from CTP2 its name, enabling advance, upgrade path,
+cost, attack, defense, movement and vision, converted like this:
+
+  attack, defense   CTP2 value / 5 (ranged units use their ranged
+                    attack as attack)
+  hit points        10 x CTP2 armor
+  firepower         as in CTP2
+  build cost        CTP2 shield cost / 15
+  vision radius     CTP2 range r gives vision_radius_sq r*r + 1
+
+Freeciv specific behavior (unit class, abilities, cargo, roles used
+by the AI) comes from the closest sandbox unit.
+
+Some Freeciv units remain because the engine or the AI needs them:
+Workers, Engineers, Mechanic, Explorer, Partisan, Fanatics, Leader,
+Barbarian Leader and Storm.
+
+Not converted yet: CTP2 special units without Freeciv equivalent
+(Slaver, Abolitionist, Cleric, Televangelist, Lawyer, Corporate
+Branch, Infector, Eco-Ranger, Eco-Terrorist), government specific
+units (Fascist), undersea and space units (Sea Engineer, Crawler,
+Space Plane) and the Cargo Helicopter.
+
+
+Known limitations
+-----------------
+
+- The AI never spends infrapoints, so Workers are still available and
+  the AI keeps using them. Human players may use both.
+- CTP2 armies (stacks of up to 12 units fighting together, with
+  flanking and ranged rows) need engine changes and are not part of
+  this ruleset.
+
+
+Roadmap
+-------
+
+1. Policies and Public Works (done).
+2. CTP2 technology tree and units (this version). Next: buildings
+   and wonders, crime as waste, city radius growing with size, CTP2
+   governments.
+3. Lua: Feats of Wonder, readiness delay, ruins.
+4. Engine work in this fork: armies and CTP2 combat, AI use of Public
+   Works.
